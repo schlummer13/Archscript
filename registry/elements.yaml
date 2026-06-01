@@ -1,0 +1,144 @@
+elements:
+  actor:
+    plantuml: actor
+    label: Actor
+
+  user:
+    plantuml: actor
+    label: User
+
+  team:
+    plantuml: actor
+    label: Team
+
+  system:
+    plantuml: component
+    label: System
+
+  application:
+    plantuml: component
+    label: Application
+
+  frontend:
+    plantuml: component
+    label: Frontend
+
+  backend:
+    plantuml: component
+    label: Backend
+
+  service:
+    plantuml: component
+    label: Service
+
+  microservice:
+    plantuml: component
+    label: Microservice
+
+  api:
+    plantuml: component
+    label: API
+
+  gateway:
+    plantuml: component
+    label: Gateway
+
+  worker:
+    plantuml: component
+    label: Worker
+
+  cron:
+    plantuml: component
+    label: Cron Job
+
+  mobile_app:
+    plantuml: component
+    label: Mobile App
+
+  desktop_app:
+    plantuml: component
+    label: Desktop App
+
+  library:
+    plantuml: component
+    label: Library
+
+  database:
+    plantuml: database
+    label: Database
+
+  cache:
+    plantuml: database
+    label: Cache
+
+  search_index:
+    plantuml: database
+    label: Search Index
+
+  vector_db:
+    plantuml: database
+    label: Vector Database
+
+  queue:
+    plantuml: queue
+    label: Queue
+
+  event_bus:
+    plantuml: queue
+    label: Event Bus
+
+  topic:
+    plantuml: queue
+    label: Topic
+
+  message_broker:
+    plantuml: queue
+    label: Message Broker
+
+  storage:
+    plantuml: storage
+    label: Storage
+
+  bucket:
+    plantuml: storage
+    label: Bucket
+
+  file_storage:
+    plantuml: storage
+    label: File Storage
+
+  object_storage:
+    plantuml: storage
+    label: Object Storage
+
+  cloud:
+    plantuml: cloud
+    label: Cloud
+
+  cdn:
+    plantuml: cloud
+    label: CDN
+
+  external:
+    plantuml: rectangle
+    label: External System
+
+  external_api:
+    plantuml: rectangle
+    label: External API
+
+  identity_provider:
+    plantuml: rectangle
+    label: Identity Provider
+
+  monitoring:
+    plantuml: rectangle
+    label: Monitoring
+
+  logging:
+    plantuml: rectangle
+    label: Logging
+
+  tracing:
+    plantuml: rectangle
+    label: Tracing

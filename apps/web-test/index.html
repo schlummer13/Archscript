@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ArchScript Wasm Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 40px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 260px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    pre {
+      background: #f4f4f5;
+      padding: 16px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>ArchScript Wasm Test</h1>
+
+  <textarea id="source">project Demo
+
+element frontend "Web App" as webapp {
+  owner "Frontend Team"
+  monitoring "Grafana"
+  tags [production]
+}
+
+element service "Customer API" as api {
+  owner "Platform Team"
+  monitoring "Grafana"
+  tags [critical, production]
+}
+
+element database PostgreSQL as db
+
+relation webapp -> api {
+  protocol "REST"
+}
+
+relation api -> db {
+  protocol "PostgreSQL"
+}</textarea>
+
+  <button id="compile">Compile</button>
+
+  <h2>Result JSON</h2>
+  <pre id="result"></pre>
+
+  <script type="module">
+    import init, { compile_archscript } from "../../wasm/pkg/archscript_wasm.js";
+
+    const sourceEl = document.getElementById("source");
+    const resultEl = document.getElementById("result");
+    const compileBtn = document.getElementById("compile");
+
+    await init();
+
+    function compile() {
+      const raw = compile_archscript(sourceEl.value);
+      const result = JSON.parse(raw);
+      resultEl.textContent = JSON.stringify(result, null, 2);
+    }
+
+    compileBtn.addEventListener("click", compile);
+    compile();
+  </script>
+</body>
+</html>
