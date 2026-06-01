@@ -12,9 +12,10 @@ dependencies = [
 
 [[package]]
 name = "archscript-wasm"
-version = "0.1.0"
+version = "1.1.0"
 dependencies = [
  "archscript-core",
+ "serde",
  "serde_json",
  "wasm-bindgen",
 ]

@@ -1,0 +1,1 @@
+console.log("PLAYGROUND TEST 1: plain JS loaded"),document.getElementById("diagram").textContent="Plain JS works."

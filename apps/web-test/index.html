@@ -1,32 +1,71 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>ArchScript Wasm Test</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 40px;
-    }
+<meta charset="utf-8">
+<title>ArchScript Playground</title>
 
-    textarea {
-      width: 100%;
-      height: 260px;
-      font-family: monospace;
-      font-size: 14px;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: system-ui;
+}
 
-    pre {
-      background: #f4f4f5;
-      padding: 16px;
-      overflow: auto;
-    }
-  </style>
+header {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+main {
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+button {
+    margin-top: 12px;
+    padding: 10px 18px;
+}
+
+.section {
+    margin-top: 24px;
+}
+
+pre {
+    background: #f5f5f5;
+    padding: 16px;
+    overflow: auto;
+}
+
+.violation {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.error {
+    background: #f8d7da;
+    border: 1px solid #f1aeb5;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+</style>
 </head>
-<body>
-  <h1>ArchScript Wasm Test</h1>
 
-  <textarea id="source">project Demo
+<body>
+
+<header>
+    <h1>ArchScript Playground</h1>
+</header>
+
+<main>
+
+<textarea id="source">project Demo
 
 element frontend "Web App" as webapp {
   owner "Frontend Team"
@@ -50,28 +89,104 @@ relation api -> db {
   protocol "PostgreSQL"
 }</textarea>
 
-  <button id="compile">Compile</button>
+<br>
 
-  <h2>Result JSON</h2>
-  <pre id="result"></pre>
+<button id="compile">
+Compile
+</button>
 
-  <script type="module">
-    import init, { compile_archscript } from "../../wasm/pkg/archscript_wasm.js";
+<div class="section">
+    <h2>PlantUML</h2>
+    <pre id="plantuml"></pre>
+</div>
 
-    const sourceEl = document.getElementById("source");
-    const resultEl = document.getElementById("result");
-    const compileBtn = document.getElementById("compile");
+<div class="section">
+    <h2>Documentation</h2>
+    <pre id="documentation"></pre>
+</div>
 
-    await init();
+<div class="section">
+    <h2>Violations</h2>
+    <div id="violations"></div>
+</div>
 
-    function compile() {
-      const raw = compile_archscript(sourceEl.value);
-      const result = JSON.parse(raw);
-      resultEl.textContent = JSON.stringify(result, null, 2);
+<div class="section">
+    <h2>Diagnostics</h2>
+    <div id="diagnostics"></div>
+</div>
+
+</main>
+
+<script type="module">
+import init, {
+    compile_archscript
+} from "../../wasm/pkg/archscript_wasm.js";
+
+await init();
+
+const source = document.getElementById("source");
+const compileButton = document.getElementById("compile");
+
+const plantuml = document.getElementById("plantuml");
+const documentation = document.getElementById("documentation");
+
+const violations = document.getElementById("violations");
+const diagnostics = document.getElementById("diagnostics");
+
+function render() {
+
+    const raw = compile_archscript(source.value);
+    const result = JSON.parse(raw);
+
+    plantuml.textContent =
+        result.plantuml || "";
+
+    documentation.textContent =
+        result.documentation || "";
+
+    violations.innerHTML = "";
+    diagnostics.innerHTML = "";
+
+    if (result.violations) {
+        result.violations.forEach(v => {
+
+            const div = document.createElement("div");
+
+            div.className = "violation";
+
+            div.innerHTML = `
+                <strong>${v.rule}</strong><br>
+                ${v.message}
+            `;
+
+            violations.appendChild(div);
+        });
     }
 
-    compileBtn.addEventListener("click", compile);
-    compile();
-  </script>
+    if (result.diagnostics) {
+        result.diagnostics.forEach(d => {
+
+            const div = document.createElement("div");
+
+            div.className = "error";
+
+            div.innerHTML = `
+                <strong>Error</strong><br>
+                ${d.message}
+            `;
+
+            diagnostics.appendChild(div);
+        });
+    }
+}
+
+compileButton.addEventListener(
+    "click",
+    render
+);
+
+render();
+</script>
+
 </body>
 </html>

@@ -1,0 +1,28 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --watch",
+    "build": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@codemirror/autocomplete": "^6.20.2",
+    "@codemirror/commands": "^6.10.3",
+    "@codemirror/language": "^6.12.3",
+    "@codemirror/search": "^6.7.0",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/view": "^6.43.0",
+    "@lezer/highlight": "^1.2.3",
+    "@tailwindcss/cli": "^4.3.0",
+    "jspdf": "^4.2.1",
+    "pako": "^2.1.0",
+    "pdf-lib": "^1.17.1",
+    "tailwindcss": "^4.3.0"
+  }
+}

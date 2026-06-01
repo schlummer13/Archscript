@@ -10,6 +10,8 @@ pub fn generate_with_registry(project: &Project, registry: &ElementRegistry) -> 
     let mut output = String::new();
 
     output.push_str("@startuml\n");
+    output.push_str(plantuml_theme());
+    output.push('\n');
     output.push_str(&format!("title {}\n\n", project.name));
 
     for element in &project.elements {
@@ -82,10 +84,7 @@ pub fn generate_with_registry(project: &Project, registry: &ElementRegistry) -> 
 }
 
 fn format_element(element: &Element, registry: &ElementRegistry) -> String {
-    let label = match element.properties.get("description") {
-        Some(description) => format!("{}\\n{}", element.name, description),
-        None => element.name.clone(),
-    };
+    let label = format_element_label(element);
 
     let shape = registry
         .get(&element.kind)
@@ -93,12 +92,103 @@ fn format_element(element: &Element, registry: &ElementRegistry) -> String {
         .unwrap_or(&PlantUmlShape::Component);
 
     match shape {
-        PlantUmlShape::Actor => format!("actor \"{}\" as {}", label, element.id),
-        PlantUmlShape::Component => format!("component \"{}\" as {}", label, element.id),
-        PlantUmlShape::Database => format!("database \"{}\" as {}", label, element.id),
-        PlantUmlShape::Queue => format!("queue \"{}\" as {}", label, element.id),
-        PlantUmlShape::Storage => format!("storage \"{}\" as {}", label, element.id),
-        PlantUmlShape::Cloud => format!("cloud \"{}\" as {}", label, element.id),
-        PlantUmlShape::Rectangle => format!("rectangle \"{}\" as {}", label, element.id),
+    PlantUmlShape::Actor => {
+        format!("actor \"{}\" as {}", label, element.id)
     }
+    PlantUmlShape::Database => {
+        format!("database \"{}\" as {}", label, element.id)
+    }
+    PlantUmlShape::Queue => {
+        format!("rectangle \"{}\" as {}", label, element.id)
+    }
+    PlantUmlShape::Storage => {
+        format!("rectangle \"{}\" as {}", label, element.id)
+    }
+    PlantUmlShape::Cloud => {
+        format!("rectangle \"{}\" as {}", label, element.id)
+    }
+    PlantUmlShape::Rectangle => {
+        format!("rectangle \"{}\" as {}", label, element.id)
+    }
+    PlantUmlShape::Component => {
+        format!("rectangle \"{}\" as {}", label, element.id)
+    }
+}
+}
+
+fn format_element_label(element: &Element) -> String {
+    let mut lines = vec![element.name.clone()];
+
+    lines.push(element.kind.clone());
+
+    if let Some(tech) = element.properties.get("tech") {
+        lines.push(format!("tech: {}", tech));
+    }
+
+    if let Some(owner) = element.properties.get("owner") {
+        lines.push(format!("owner: {}", owner));
+    }
+
+    if !element.tags.is_empty() {
+        lines.push(format!("tags: {}", element.tags.join(", ")));
+    }
+
+    if let Some(description) = element.properties.get("description") {
+        lines.push(description.clone());
+    }
+
+    lines.join("\\n")
+}
+
+fn plantuml_theme() -> &'static str {
+    r#"skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 13
+skinparam defaultTextAlignment center
+
+skinparam linetype ortho
+skinparam nodesep 60
+skinparam ranksep 70
+
+skinparam ArrowColor #111111
+skinparam ArrowThickness 1
+skinparam ArrowFontColor #111111
+skinparam ArrowFontSize 11
+
+skinparam rectangle {
+  BackgroundColor #ffffff
+  BorderColor #111111
+  FontColor #111111
+  BorderThickness 1
+}
+
+skinparam database {
+  BackgroundColor #ffffff
+  BorderColor #111111
+  FontColor #111111
+  BorderThickness 1
+}
+
+skinparam actor {
+  BackgroundColor #ffffff
+  BorderColor #111111
+  FontColor #111111
+  BorderThickness 1
+}
+
+skinparam package {
+  BackgroundColor transparent
+  BorderColor #111111
+  FontColor #111111
+  BorderThickness 1
+  FontStyle bold
+}
+
+skinparam title {
+  FontColor #111111
+  FontSize 22
+  FontStyle bold
+}
+"#
 }

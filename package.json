@@ -1,0 +1,29 @@
+{
+  "name": "archscript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "wasm:build": "wasm-pack build wasm --target web --release",
+    "wasm:copy": "rm -rf apps/web/static/wasm && mkdir -p apps/web/static/wasm && cp -R wasm/pkg/* apps/web/static/wasm/",
+    "wasm": "npm run wasm:build && npm run wasm:copy",
+    "web:dev": "cd apps/web && npm run dev",
+    "web:hugo": "cd apps/web && hugo server -D",
+    "test:rust": "cargo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schlummer13/Archscript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/schlummer13/Archscript/issues"
+  },
+  "homepage": "https://github.com/schlummer13/Archscript#readme"
+}

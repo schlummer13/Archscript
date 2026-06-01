@@ -1,0 +1,11 @@
+baseURL: "https://archscript.dev/"
+locale: "de-DE"
+title: "ArchScript"
+disableKinds:
+  - taxonomy
+  - term
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
