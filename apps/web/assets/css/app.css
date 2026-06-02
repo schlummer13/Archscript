@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --bg: #fafafa;
   --surface: #ffffff;
@@ -22,6 +23,10 @@ html.dark {
   --border: #262626;
   --border-strong: #f3f4f6;
   --grid: rgba(255, 255, 255, 0.04);
+}
+
+html.dark .diagram {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 body {

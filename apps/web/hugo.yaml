@@ -1,9 +1,25 @@
 baseURL: "https://archscript.dev/"
-locale: "de-DE"
 title: "ArchScript"
+locale: "en-US"
+
+enableRobotsTXT: true
+enableGitInfo: false
+
 disableKinds:
   - taxonomy
   - term
+
+sitemap:
+  changefreq: "weekly"
+  priority: 0.8
+  filename: "sitemap.xml"
+
+params:
+  description: "ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, documentation and architecture reports."
+  siteName: "ArchScript"
+  author: "ArchScript"
+  ogImage: "/images/og-image.png"
+  themeColor: "#fafafa"
 
 markup:
   goldmark:

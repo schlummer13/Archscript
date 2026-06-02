@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+
+
+
+<title>Documentation · ArchScript</title>
+
+<meta name="description" content="Learn the ArchScript DSL for software architecture. Model projects, elements, relations, domains, environments, tags, metadata and architecture rules.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ArchScript">
+<meta name="theme-color" content="#fafafa">
+
+<link rel="canonical" href="http://localhost:1313/docs/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ArchScript">
+<meta property="og:title" content="Documentation · ArchScript">
+<meta property="og:description" content="Learn the ArchScript DSL for software architecture. Model projects, elements, relations, domains, environments, tags, metadata and architecture rules.">
+<meta property="og:url" content="http://localhost:1313/docs/">
+<meta property="og:image" content="http://localhost:1313/images/og-image.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Documentation · ArchScript">
+<meta name="twitter:description" content="Learn the ArchScript DSL for software architecture. Model projects, elements, relations, domains, environments, tags, metadata and architecture rules.">
+<meta name="twitter:image" content="http://localhost:1313/images/og-image.png">
+
+
+
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]">
+  <header
+  class="
+    sticky top-0 z-50
+    grid grid-cols-[240px_1fr_240px]
+    items-center
+    min-h-16
+    px-8
+    border-b border-[var(--border-strong)]
+    bg-[color-mix(in_srgb,var(--bg)_92%,transparent)]
+    backdrop-blur-xl
+    max-[1100px]:grid-cols-1
+    max-[1100px]:gap-4
+    max-[1100px]:py-4
+    max-[1100px]:px-6
+  "
+>
+  <a href="/" class="flex flex-col gap-0.5">
+    <span
+      class="
+        text-xs font-extrabold
+        tracking-[0.22em]
+        uppercase
+      "
+    >
+      ARCHSCRIPT
+    </span>
+
+    <span
+      class="
+        text-[10px]
+        tracking-[0.18em]
+        uppercase
+        text-[var(--muted)]
+      "
+    >
+      ARCHITECTURE AS CODE
+    </span>
+  </a>
+
+  <nav
+    class="
+      flex justify-center gap-8
+      max-[1100px]:justify-start
+      max-[1100px]:flex-wrap
+    "
+  >
+    <a
+      href="/playground/"
+      class="
+        text-[11px]
+        tracking-[0.18em]
+        uppercase
+        hover:text-[var(--muted)]
+      "
+    >
+      Playground
+    </a>
+
+    <a
+      href="/docs/"
+      class="
+        text-[11px]
+        tracking-[0.18em]
+        uppercase
+        hover:text-[var(--muted)]
+      "
+    >
+      Documentation
+    </a>
+
+    <a
+      href="/templates/"
+      class="
+        text-[11px]
+        tracking-[0.18em]
+        uppercase
+        hover:text-[var(--muted)]
+      "
+    >
+      Templates
+    </a>
+  </nav>
+
+  <div
+    class="
+      flex items-center justify-end gap-3.5
+      max-[1100px]:justify-start
+    "
+  >
+    <div
+      class="
+        text-[11px]
+        tracking-[0.18em]
+        uppercase
+        whitespace-nowrap
+      "
+    >
+      SYSTEM / V0.9
+    </div>
+
+    <button
+  id="theme-toggle"
+  class="
+    inline-flex items-center gap-2
+    border border-[var(--border-strong)]
+    bg-[var(--surface)]
+    px-3 py-2
+    text-[10px] font-semibold
+    uppercase tracking-[0.16em]
+    transition-colors
+    hover:bg-[var(--text)]
+    hover:text-[var(--bg)]
+  "
+  aria-label="Toggle color theme"
+>
+  <span id="theme-toggle-icon">○</span>
+  <span id="theme-toggle-label">Theme</span>
+</button>
+  </div>
+</header>
+  
+
+
+
+<main class="mx-auto w-full max-w-[1600px] px-8 py-14 max-[640px]:px-4">
+
+  <section class="mb-14">
+    <p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
+      Documentation
+    </p>
+
+    <h1 class="max-w-[1100px] text-[clamp(56px,7vw,120px)] font-semibold leading-[0.9] tracking-[-0.08em]">
+      ArchScript language reference.
+    </h1>
+
+    <p class="mt-8 max-w-[820px] text-lg leading-8 text-[var(--muted)]">
+      ArchScript is a small DSL for describing software architecture as code.
+      It models systems, components, domains, environments, relations, metadata
+      and architecture rules, then generates diagrams, documentation and reports.
+    </p>
+  </section>
+
+  <section class="grid grid-cols-[300px_1fr] gap-10 max-[1100px]:grid-cols-1">
+    <aside class="sticky top-24 h-fit border border-[var(--border-strong)] bg-[var(--surface)] max-[1100px]:static">
+      <div class="border-b border-[var(--border)] px-4 py-4 text-[11px] font-bold uppercase tracking-[0.22em]">
+        Language
+      </div>
+
+      <nav>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#overview">Overview</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#project">Project</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#elements">Elements</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#ids">Element IDs</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#properties">Properties</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#tags">Tags</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#relations">Relations</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#boundaries">Boundaries</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#domains">Domains</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#environments">Environments</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#rules">Architecture Rules</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#exports">Exports</a>
+        <a class="block border-b border-[var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--text)]" href="#example">Complete Example</a>
+      </nav>
+    </aside>
+
+    <div class="space-y-10">
+      <section id="overview" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      What ArchScript describes
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      An ArchScript file describes a software system as structured architecture data. The same source can generate PlantUML diagrams, Markdown documentation, SVG, PNG and PDF architecture reports.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">project SaaSPlatform
+
+element frontend &#34;Customer Portal&#34; as portal
+element service &#34;Tenant API&#34; as tenant_api
+element database &#34;Tenant Database&#34; as tenant_db
+
+relation portal -&gt; tenant_api : REST
+relation tenant_api -&gt; tenant_db : PostgreSQL</pre>
+</section>
+
+      <section id="project" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Define the architecture name
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Every ArchScript file starts with a project declaration. The project name is used as the diagram title and as the main heading in generated documentation and reports.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">project SaaSPlatform</pre>
+</section>
+
+      <section id="elements" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Model architecture building blocks
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Elements represent the building blocks of a software system. They can be users, teams, frontends, backends, services, databases, queues, gateways, external APIs, storage systems, identity providers and more.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">element actor &#34;Customer&#34; as customer
+element frontend &#34;Web App&#34; as webapp
+element service &#34;Customer API&#34; as api
+element database &#34;PostgreSQL&#34; as db
+element event_bus &#34;Event Bus&#34; as event_bus
+element identity_provider &#34;Keycloak&#34; as idp</pre>
+</section>
+
+      <section id="ids" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Separate display names from stable identifiers
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Use `as` to assign a stable technical ID to an element. Relations should reference IDs, not display names. This keeps relationships stable even when you rename labels.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">element service &#34;Customer API&#34; as customer_api
+
+element database &#34;Customer Database&#34; as customer_db
+
+relation customer_api -&gt; customer_db : PostgreSQL</pre>
+</section>
+
+      <section id="properties" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Add metadata to your architecture
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Properties enrich elements and relations with architecture metadata such as technology, owner, monitoring and descriptions. This metadata is used in generated documentation and detailed diagrams.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">element service &#34;Billing Service&#34; as billing {
+  tech &#34;Rust&#34;
+  owner &#34;Platform Team&#34;
+  monitoring &#34;Grafana&#34;
+  description &#34;Handles subscription billing&#34;
+}
+
+relation billing -&gt; billing_db {
+  protocol &#34;PostgreSQL&#34;
+  description &#34;Stores billing records&#34;
+}</pre>
+</section>
+
+      <section id="tags" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Classify elements and relations
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Tags classify architecture elements and relations. They are useful for filtering, documentation, rules and future visual views. Tags are written as arrays.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">element service &#34;Tenant API&#34; as tenant_api {
+  owner &#34;Backend Team&#34;
+  monitoring &#34;Grafana&#34;
+  tags [critical, production]
+}
+
+relation portal -&gt; tenant_api {
+  protocol &#34;REST&#34;
+  tags [sync, public]
+}</pre>
+</section>
+
+      <section id="relations" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Describe dependencies and communication
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Relations describe how elements communicate or depend on each other. They can use a short label or a full property block.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">relation portal -&gt; api : REST
+
+relation api -&gt; event_bus {
+  label &#34;publishes OrderCreated&#34;
+  protocol &#34;Kafka&#34;
+  tags [async, event-driven]
+}</pre>
+</section>
+
+      <section id="boundaries" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Group elements by technical boundaries
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Boundaries group elements into technical or logical areas such as Client, Backend, Infrastructure or Messaging.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">boundary Client {
+  element actor &#34;Customer&#34; as customer
+  element frontend &#34;Web App&#34; as webapp
+}
+
+boundary Backend {
+  element service &#34;API&#34; as api
+  element database &#34;PostgreSQL&#34; as db
+}</pre>
+</section>
+
+      <section id="domains" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Model business capabilities and bounded contexts
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Domains represent business capabilities or DDD bounded contexts. They are useful for microservice architectures, modular monoliths and product platforms.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">domain Billing {
+  element service &#34;Billing Service&#34; as billing
+  element database &#34;Billing Database&#34; as billing_db
+}
+
+domain Identity {
+  element service &#34;Auth Service&#34; as auth
+  element database &#34;Auth Database&#34; as auth_db
+}</pre>
+</section>
+
+      <section id="environments" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      Represent deployment stages
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      Environments model where architecture elements run. Common examples are Development, Staging and Production.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">environment Production {
+  element cdn &#34;CDN&#34; as cdn
+  element frontend &#34;Customer Portal&#34; as portal
+  element gateway &#34;API Gateway&#34; as gateway
+  element service &#34;Tenant API&#34; as tenant_api
+  element database &#34;Tenant Database&#34; as tenant_db
+}</pre>
+</section>
+
+      <section id="rules" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+        <div class="border-b border-[var(--border)] p-6">
+          <p class="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
+            Architecture Rules
+          </p>
+
+          <h2 class="text-[clamp(32px,4vw,56px)] font-semibold leading-[0.95] tracking-[-0.06em]">
+            Built-in architecture review
+          </h2>
+
+          <p class="mt-5 max-w-[780px] leading-7 text-[var(--muted)]">
+            ArchScript includes a rule engine that checks architecture constraints.
+            Rule violations do not block diagram generation, but they appear in
+            the Playground and in PDF reports.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-3 border-b border-[var(--border)] max-[900px]:grid-cols-1">
+          <div class="border-r border-[var(--border)] p-6 max-[900px]:border-b max-[900px]:border-r-0">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+              no_frontend_to_database
+            </p>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Prevents frontend elements from directly accessing database-like elements.
+            </p>
+          </div>
+
+          <div class="border-r border-[var(--border)] p-6 max-[900px]:border-b max-[900px]:border-r-0">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+              critical_requires_owner
+            </p>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Requires every element tagged as critical to define an owner property.
+            </p>
+          </div>
+
+          <div class="p-6">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+              production_requires_monitoring
+            </p>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Requires production elements to define monitoring metadata.
+            </p>
+          </div>
+        </div>
+
+        <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">element service "Billing Service" as billing {
+  tags [critical, production]
+}
+
+# Rule output:
+# Critical element 'Billing Service' requires owner property
+# Production element 'Billing Service' requires monitoring property</pre>
+      </section>
+
+      <section id="exports" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+        <div class="border-b border-[var(--border)] p-6">
+          <p class="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
+            Exports
+          </p>
+
+          <h2 class="text-[clamp(32px,4vw,56px)] font-semibold leading-[0.95] tracking-[-0.06em]">
+            Generate architecture artifacts
+          </h2>
+
+          <p class="mt-5 max-w-[780px] leading-7 text-[var(--muted)]">
+            ArchScript can export multiple artifacts from the same source model.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-3 max-[900px]:grid-cols-1">
+          <div class="border-r border-b border-[var(--border)] p-6 max-[900px]:border-r-0">
+            <h3 class="text-2xl font-semibold tracking-[-0.04em]">
+              PlantUML
+            </h3>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Use generated PlantUML in existing architecture documentation pipelines.
+            </p>
+          </div>
+
+          <div class="border-r border-b border-[var(--border)] p-6 max-[900px]:border-r-0">
+            <h3 class="text-2xl font-semibold tracking-[-0.04em]">
+              SVG / PNG
+            </h3>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Export rendered diagrams for presentations, documentation and reports.
+            </p>
+          </div>
+
+          <div class="border-b border-[var(--border)] p-6">
+            <h3 class="text-2xl font-semibold tracking-[-0.04em]">
+              PDF Report
+            </h3>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Generate a branded architecture report with diagram, documentation and review results.
+            </p>
+          </div>
+
+          <div class="border-r border-[var(--border)] p-6 max-[900px]:border-r-0 max-[900px]:border-b">
+            <h3 class="text-2xl font-semibold tracking-[-0.04em]">
+              Markdown
+            </h3>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Produce text documentation that can be stored in repositories or wikis.
+            </p>
+          </div>
+
+          <div class="border-r border-[var(--border)] p-6 max-[900px]:border-r-0 max-[900px]:border-b">
+            <h3 class="text-2xl font-semibold tracking-[-0.04em]">
+              .archscript
+            </h3>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              Save and version your architecture source as a dedicated DSL file.
+            </p>
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold tracking-[-0.04em]">
+              JSON Result
+            </h3>
+            <p class="mt-4 leading-7 text-[var(--muted)]">
+              The compiler exposes structured output for future integrations and extensions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="example" class="border border-[var(--border-strong)] bg-[var(--surface)]">
+  <div class="border-b border-[var(--border)] p-6">
+    <h2 class="text-3xl font-semibold tracking-[-0.05em]">
+      A production SaaS architecture
+    </h2>
+
+    <p class="mt-4 max-w-[760px] leading-7 text-[var(--muted)]">
+      This example combines environments, metadata, tags and relations.
+    </p>
+  </div>
+
+  <pre class="overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 whitespace-pre-wrap">project SaaSPlatform
+
+environment Production {
+  element cdn &#34;CDN&#34; as cdn {
+    tech &#34;Cloudflare&#34;
+    owner &#34;Platform Team&#34;
+    monitoring &#34;Cloudflare&#34;
+    tags [production]
+  }
+
+  element frontend &#34;Customer Portal&#34; as portal {
+    tech &#34;React&#34;
+    owner &#34;Frontend Team&#34;
+    monitoring &#34;Grafana&#34;
+    tags [production]
+  }
+
+  element gateway &#34;API Gateway&#34; as gateway {
+    owner &#34;Platform Team&#34;
+    monitoring &#34;Grafana&#34;
+    tags [critical, production]
+  }
+
+  element service &#34;Tenant API&#34; as tenant_api {
+    owner &#34;Backend Team&#34;
+    monitoring &#34;Grafana&#34;
+    tags [critical, production]
+  }
+
+  element database &#34;Tenant Database&#34; as tenant_db {
+    owner &#34;Database Team&#34;
+    monitoring &#34;Grafana&#34;
+    tags [critical, production]
+  }
+}
+
+relation cdn -&gt; portal : serves
+relation portal -&gt; gateway : HTTPS
+relation gateway -&gt; tenant_api : REST
+relation tenant_api -&gt; tenant_db : PostgreSQL</pre>
+</section>
+
+      <section class="border border-[var(--border-strong)] bg-[var(--surface)] p-8">
+        <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
+          Next Step
+        </p>
+
+        <div class="flex items-end justify-between gap-8 max-[900px]:flex-col max-[900px]:items-start">
+          <h2 class="max-w-[760px] text-[clamp(36px,5vw,72px)] font-semibold leading-[0.95] tracking-[-0.07em]">
+            Try ArchScript in the Playground.
+          </h2>
+
+          <a
+            href="/playground/"
+            class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)]"
+          >
+            Open Playground
+          </a>
+        </div>
+      </section>
+      <section class="border border-[var(--border-strong)] bg-[var(--surface)] p-8">
+  <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
+    Next
+  </p>
+
+  <div class="grid grid-cols-[1fr_auto] items-end gap-8 max-[900px]:grid-cols-1">
+    <div>
+      <h2 class="max-w-[780px] text-[clamp(36px,5vw,72px)] font-semibold leading-[0.95] tracking-[-0.07em]">
+        Start with a template or open the Playground.
+      </h2>
+
+      <p class="mt-6 max-w-[680px] leading-7 text-[var(--muted)]">
+        Use the built-in templates to explore common architecture patterns, then adapt the DSL to your own system.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      <a
+        href="/templates/"
+        class="inline-flex border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text)] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]"
+      >
+        View Templates
+      </a>
+
+      <a
+        href="/playground/"
+        class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)]"
+      >
+        Open Playground
+      </a>
+    </div>
+  </div>
+</section>
+    </div>
+  </section>
+</main>
+
+
+  <footer
+  class="
+    border-t border-[var(--border)]
+    px-8 py-8
+    text-[11px]
+    uppercase
+    tracking-[0.12em]
+    text-[var(--muted)]
+    max-[640px]:px-4
+  "
+>
+  <div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1">
+    <div>
+      <p class="text-[var(--text)]">
+        ARCHSCRIPT
+      </p>
+
+      <p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">
+        Architecture as Code for software systems. Built with Rust, WebAssembly,
+        Hugo and PlantUML.
+      </p>
+
+      <p class="mt-5">
+        © 2026 ArchScript
+      </p>
+    </div>
+
+    <div>
+      <p class="mb-4 text-[var(--text)]">
+        Product
+      </p>
+
+      <nav class="flex flex-col gap-3">
+        <a href="/playground/" class="hover:text-[var(--text)]">
+          Playground
+        </a>
+
+        <a href="/docs/" class="hover:text-[var(--text)]">
+          Documentation
+        </a>
+
+        <a href="/templates/" class="hover:text-[var(--text)]">
+          Templates
+        </a>
+      </nav>
+    </div>
+
+    <div>
+      <p class="mb-4 text-[var(--text)]">
+        Project
+      </p>
+
+      <nav class="flex flex-col gap-3">
+        <a
+          href="https://floriancode.de"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          FlorianCode.de
+        </a>
+
+        <a
+          href="https://github.com/schlummer13"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          GitHub / schlummer13
+        </a>
+
+        <a
+          href="https://floriancode.de/impressum/"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          Imprint
+        </a>
+
+        <a
+          href="https://floriancode.de/datenschutz/"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          Privacy Policy
+        </a>
+      </nav>
+    </div>
+  </div>
+</footer>
+  <script src="/js/theme.js"></script>
+  <script defer src="https://tracking.floriancode.de/script.js" data-website-id="a1267098-714e-4408-a9a1-c4f8145e9efb"></script>
+</body>
+</html>

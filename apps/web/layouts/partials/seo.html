@@ -1,0 +1,63 @@
+{{ $title := cond .IsHome .Site.Title (printf "%s · %s" .Title .Site.Title) }}
+{{ $description := .Params.description | default .Site.Params.description }}
+{{ $canonical := .Permalink }}
+{{ $ogImage := absURL (.Params.ogImage | default .Site.Params.ogImage) }}
+
+<title>{{ $title }}</title>
+
+<meta name="description" content="{{ $description }}">
+<meta name="robots" content="index, follow">
+<meta name="author" content="{{ .Site.Params.author }}">
+<meta name="theme-color" content="{{ .Site.Params.themeColor }}">
+
+<link rel="canonical" href="{{ $canonical }}">
+
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:site_name" content="{{ .Site.Params.siteName }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ $canonical }}">
+<meta property="og:image" content="{{ $ogImage }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ArchScript",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "url": "https://archscript.dev/",
+  "description": "ArchScript is an Architecture-as-Code tool for planning software systems with a DSL and generating PlantUML diagrams, documentation and architecture reports.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "ArchScript"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ArchScript",
+  "url": "https://archscript.dev/",
+  "description": "Architecture as Code for software systems.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://archscript.dev/docs/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{{ end }}

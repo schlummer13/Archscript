@@ -1,20 +1,92 @@
 <footer
   class="
-    flex justify-between gap-6
     border-t border-[var(--border)]
-    px-8 py-[18px]
+    px-8 py-8
     text-[11px]
-    tracking-[0.12em]
     uppercase
+    tracking-[0.12em]
     text-[var(--muted)]
-    max-[640px]:flex-col
+    max-[640px]:px-4
   "
 >
-  <span>
-    © {{ now.Year }} ArchScript
-  </span>
+  <div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1">
+    <div>
+      <p class="text-[var(--text)]">
+        ARCHSCRIPT
+      </p>
 
-  <span>
-    Architecture as Code · PlantUML · Rust/Wasm
-  </span>
+      <p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">
+        Architecture as Code for software systems. Built with Rust, WebAssembly,
+        Hugo and PlantUML.
+      </p>
+
+      <p class="mt-5">
+        © {{ now.Year }} ArchScript
+      </p>
+    </div>
+
+    <div>
+      <p class="mb-4 text-[var(--text)]">
+        Product
+      </p>
+
+      <nav class="flex flex-col gap-3">
+        <a href="/playground/" class="hover:text-[var(--text)]">
+          Playground
+        </a>
+
+        <a href="/docs/" class="hover:text-[var(--text)]">
+          Documentation
+        </a>
+
+        <a href="/templates/" class="hover:text-[var(--text)]">
+          Templates
+        </a>
+      </nav>
+    </div>
+
+    <div>
+      <p class="mb-4 text-[var(--text)]">
+        Project
+      </p>
+
+      <nav class="flex flex-col gap-3">
+        <a
+          href="https://floriancode.de"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          FlorianCode.de
+        </a>
+
+        <a
+          href="https://github.com/schlummer13"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          GitHub / schlummer13
+        </a>
+
+        <a
+          href="https://floriancode.de/impressum/"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          Imprint
+        </a>
+
+        <a
+          href="https://floriancode.de/datenschutz/"
+          target="_blank"
+          rel="noreferrer"
+          class="hover:text-[var(--text)]"
+        >
+          Privacy Policy
+        </a>
+      </nav>
+    </div>
+  </div>
 </footer>

@@ -1,23 +1,46 @@
 const button = document.getElementById("theme-toggle");
+const icon = document.getElementById("theme-toggle-icon");
+const label = document.getElementById("theme-toggle-label");
 
-const savedTheme = localStorage.getItem("theme");
+function getPreferredTheme() {
+  const savedTheme = localStorage.getItem("theme");
 
-if (savedTheme === "dark") {
-  document.documentElement.classList.add("dark");
+  if (savedTheme === "dark" || savedTheme === "light") {
+    return savedTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
-button?.addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark");
+function applyTheme(theme) {
+  const isDark = theme === "dark";
 
-  const isDark = document.documentElement.classList.contains("dark");
+  document.documentElement.classList.toggle("dark", isDark);
+  localStorage.setItem("theme", theme);
 
-  localStorage.setItem("theme", isDark ? "dark" : "light");
+  if (icon) {
+    icon.textContent = isDark ? "●" : "○";
+  }
+
+  if (label) {
+    label.textContent = isDark ? "Dark" : "Light";
+  }
 
   window.dispatchEvent(
     new CustomEvent("archscript-theme-change", {
-      detail: {
-        theme: isDark ? "dark" : "light"
-      }
+      detail: { theme }
     })
   );
+}
+
+applyTheme(getPreferredTheme());
+
+button?.addEventListener("click", () => {
+  const nextTheme = document.documentElement.classList.contains("dark")
+    ? "light"
+    : "dark";
+
+  applyTheme(nextTheme);
 });

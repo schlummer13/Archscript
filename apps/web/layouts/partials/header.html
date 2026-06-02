@@ -57,7 +57,7 @@
     </a>
 
     <a
-      href="#"
+      href="/docs/"
       class="
         text-[11px]
         tracking-[0.18em]
@@ -69,7 +69,7 @@
     </a>
 
     <a
-      href="#"
+      href="/templates/"
       class="
         text-[11px]
         tracking-[0.18em]
@@ -99,19 +99,22 @@
     </div>
 
     <button
-      id="theme-toggle"
-      class="
-        border border-[var(--border-strong)]
-        bg-[var(--surface)]
-        px-2.5 py-2
-        text-[10px] font-semibold
-        tracking-[0.16em]
-        uppercase
-        hover:bg-[var(--text)]
-        hover:text-[var(--bg)]
-      "
-    >
-      Theme
-    </button>
+  id="theme-toggle"
+  class="
+    inline-flex items-center gap-2
+    border border-[var(--border-strong)]
+    bg-[var(--surface)]
+    px-3 py-2
+    text-[10px] font-semibold
+    uppercase tracking-[0.16em]
+    transition-colors
+    hover:bg-[var(--text)]
+    hover:text-[var(--bg)]
+  "
+  aria-label="Toggle color theme"
+>
+  <span id="theme-toggle-icon">○</span>
+  <span id="theme-toggle-label">Theme</span>
+</button>
   </div>
 </header>

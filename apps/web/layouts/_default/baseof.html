@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .Title }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
+  {{ partial "seo.html" . }}
+
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]">
@@ -11,5 +12,6 @@
   {{ block "main" . }}{{ end }}
   {{ partial "footer.html" . }}
   <script src="/js/theme.js"></script>
+  <script defer src="https://tracking.floriancode.de/script.js" data-website-id="a1267098-714e-4408-a9a1-c4f8145e9efb"></script>
 </body>
 </html>

@@ -1,0 +1,197 @@
+{{ define "main" }}
+
+{{ $btnPrimary := "inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors" }}
+{{ $btnSecondary := "inline-flex border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text)] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]" }}
+
+<main class="mx-auto w-full max-w-[1600px] px-8 py-14 max-[640px]:px-4">
+
+  <section class="mb-14">
+    <p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
+      Templates
+    </p>
+
+    <h1 class="max-w-[1100px] text-[clamp(56px,7vw,120px)] font-semibold leading-[0.9] tracking-[-0.08em]">
+      Architecture starting points.
+    </h1>
+
+    <p class="mt-8 max-w-[820px] text-lg leading-8 text-[var(--muted)]">
+      Start with predefined ArchScript templates for common software architectures.
+      Each template gives you a structured model with elements, relations, metadata
+      and architecture rules ready to explore in the Playground.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/playground/" class="{{ $btnPrimary }}">
+        Open Playground
+      </a>
+
+      <a href="/docs/" class="{{ $btnSecondary }}">
+        Read Documentation
+      </a>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-3 gap-6 max-[1100px]:grid-cols-2 max-[760px]:grid-cols-1">
+    {{ partial "template-card.html" (dict
+      "number" "01"
+      "label" "Blank Project"
+      "title" "Start from scratch"
+      "text" "A minimal architecture with a frontend, service and database. Ideal for learning the basic DSL syntax."
+      "bestFor" "Learning, experiments, small tools"
+      "includes" "Project, elements, relations"
+    ) }}
+
+    {{ partial "template-card.html" (dict
+      "number" "02"
+      "label" "Web Application"
+      "title" "Classic web application"
+      "text" "A standard client/backend/database architecture with clear boundaries and production-ready metadata."
+      "bestFor" "Web apps, portals, CRUD systems"
+      "includes" "Boundaries, frontend, service, database"
+    ) }}
+
+    {{ partial "template-card.html" (dict
+      "number" "03"
+      "label" "Microservices"
+      "title" "Service-oriented platform"
+      "text" "Multiple domains with dedicated services, databases and an event bus for asynchronous communication."
+      "bestFor" "Distributed systems, platform teams"
+      "includes" "Domains, services, event bus"
+    ) }}
+
+    {{ partial "template-card.html" (dict
+      "number" "04"
+      "label" "DDD Architecture"
+      "title" "Bounded contexts"
+      "text" "Model business domains and relationships between bounded contexts using explicit service ownership."
+      "bestFor" "DDD, modular monoliths, domain modeling"
+      "includes" "Domains, services, databases"
+    ) }}
+
+    {{ partial "template-card.html" (dict
+      "number" "05"
+      "label" "Event Driven"
+      "title" "Asynchronous architecture"
+      "text" "Command API, event bus, projection worker and read model for event-driven system design."
+      "bestFor" "Event sourcing, projections, async workflows"
+      "includes" "Event bus, workers, read model"
+    ) }}
+
+    {{ partial "template-card.html" (dict
+      "number" "06"
+      "label" "SaaS Platform"
+      "title" "Production SaaS system"
+      "text" "A realistic SaaS architecture with CDN, portal, API gateway, tenant API, database and identity provider."
+      "bestFor" "SaaS products, production systems"
+      "includes" "Environment, gateway, identity provider"
+    ) }}
+  </section>
+
+  <section class="mt-16 border-t border-[var(--border-strong)] pt-16">
+    <div class="grid grid-cols-[0.9fr_1.1fr] gap-8 max-[1000px]:grid-cols-1">
+      <div>
+        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
+          Example
+        </p>
+
+        <h2 class="max-w-[780px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">
+          SaaS Platform Template
+        </h2>
+
+        <p class="mt-6 max-w-[620px] leading-7 text-[var(--muted)]">
+          The SaaS template demonstrates how ArchScript can model production
+          environments, critical systems, owners, monitoring and infrastructure
+          dependencies in one readable source file.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/playground/" class="{{ $btnPrimary }}">
+            Try Template
+          </a>
+        </div>
+      </div>
+
+      <div class="border border-[var(--border-strong)] bg-[var(--surface)]">
+        <div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px]">
+          <span class="text-[11px] font-bold uppercase tracking-[0.22em]">
+            Template Source
+          </span>
+
+          <span class="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
+            SaaS Platform
+          </span>
+        </div>
+
+        <pre class="max-h-[640px] overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 text-[var(--text)] whitespace-pre-wrap">project SaaSPlatform
+
+environment Production {
+  element cdn "CDN" as cdn {
+    tech "Cloudflare"
+    owner "Platform Team"
+    monitoring "Cloudflare"
+    tags [production]
+  }
+
+  element frontend "Customer Portal" as portal {
+    tech "React"
+    owner "Frontend Team"
+    monitoring "Grafana"
+    tags [production]
+  }
+
+  element gateway "API Gateway" as gateway {
+    owner "Platform Team"
+    monitoring "Grafana"
+    tags [critical, production]
+  }
+
+  element service "Tenant API" as tenant_api {
+    owner "Backend Team"
+    monitoring "Grafana"
+    tags [critical, production]
+  }
+
+  element database "Tenant Database" as tenant_db {
+    owner "Database Team"
+    monitoring "Grafana"
+    tags [critical, production]
+  }
+
+  element identity_provider "Identity Provider" as idp {
+    tech "Keycloak"
+    owner "Security Team"
+    monitoring "Grafana"
+    tags [critical, production]
+  }
+}
+
+relation cdn -> portal : serves
+relation portal -> gateway : HTTPS
+relation gateway -> tenant_api : REST
+relation tenant_api -> tenant_db : PostgreSQL
+relation portal -> idp : OIDC</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-16 border-t border-[var(--border-strong)] pt-16">
+    <div class="border border-[var(--border-strong)] bg-[var(--surface)] p-8">
+      <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
+        Workflow
+      </p>
+
+      <div class="grid grid-cols-[1fr_auto] items-end gap-8 max-[900px]:grid-cols-1">
+        <h2 class="max-w-[860px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">
+          Open a template, adapt the model, export the architecture.
+        </h2>
+
+        <a href="/playground/" class="{{ $btnPrimary }}">
+          Open Playground
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{{ end }}
