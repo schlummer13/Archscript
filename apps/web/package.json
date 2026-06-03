@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --watch",
-    "build": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --minify"
-  },
+  "dev": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --watch",
+  "build:css": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --minify",
+  "build": "npm run build:css && hugo --minify",
+  "serve": "hugo server -D"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

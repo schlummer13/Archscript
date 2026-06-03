@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/schlummer13/Archscript/issues"
   },
-  "homepage": "https://github.com/schlummer13/Archscript#readme"
+  "homepage": "https://github.com/schlummer13/Archscript#readme",
+  "devDependencies": {
+    "lighthouse": "^13.3.0"
+  }
 }
