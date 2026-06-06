@@ -59,6 +59,10 @@ elements:
     plantuml: component
     label: Desktop App
 
+  container:
+    plantuml: rectangle
+    label: Container
+
   library:
     plantuml: component
     label: Library

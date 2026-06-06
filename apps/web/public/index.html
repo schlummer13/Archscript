@@ -1,272 +1,53 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta name="generator" content="Hugo 0.161.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-
-
-
-
-<title>ArchScript</title>
-
-<meta name="description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, Markdown documentation and professional architecture reports.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="ArchScript">
-<meta name="theme-color" content="#fafafa">
-
-<link rel="canonical" href="http://localhost:1313/">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="ArchScript">
-<meta property="og:title" content="ArchScript">
-<meta property="og:description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, Markdown documentation and professional architecture reports.">
-<meta property="og:url" content="http://localhost:1313/">
-<meta property="og:image" content="http://localhost:1313/images/og-image.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ArchScript">
-<meta name="twitter:description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, Markdown documentation and professional architecture reports.">
-<meta name="twitter:image" content="http://localhost:1313/images/og-image.png">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "ArchScript",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Web",
-  "url": "https://archscript.dev/",
-  "description": "ArchScript is an Architecture-as-Code tool for planning software systems with a DSL and generating PlantUML diagrams, documentation and architecture reports.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR"
-  },
-  "creator": {
-    "@type": "Organization",
-    "name": "ArchScript"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "ArchScript",
-  "url": "https://archscript.dev/",
-  "description": "Architecture as Code for software systems.",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://archscript.dev/docs/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-
-
-  <link rel="stylesheet" href="/css/app.css">
-</head>
-<body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]">
-  <header
-  class="
-    sticky top-0 z-50
-    grid grid-cols-[240px_1fr_240px]
-    items-center
-    min-h-16
-    px-8
-    border-b border-[var(--border-strong)]
-    bg-[color-mix(in_srgb,var(--bg)_92%,transparent)]
-    backdrop-blur-xl
-    max-[1100px]:grid-cols-1
-    max-[1100px]:gap-4
-    max-[1100px]:py-4
-    max-[1100px]:px-6
-  "
->
-  <a href="/" class="flex flex-col gap-0.5">
-    <span
-      class="
-        text-xs font-extrabold
-        tracking-[0.22em]
-        uppercase
-      "
-    >
-      ARCHSCRIPT
-    </span>
-
-    <span
-      class="
-        text-[10px]
-        tracking-[0.18em]
-        uppercase
-        text-[var(--muted)]
-      "
-    >
-      ARCHITECTURE AS CODE
-    </span>
-  </a>
-
-  <nav
-    class="
-      flex justify-center gap-8
-      max-[1100px]:justify-start
-      max-[1100px]:flex-wrap
-    "
-  >
-    <a
-      href="/playground/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Playground
-    </a>
-
-    <a
-      href="/docs/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Documentation
-    </a>
-
-    <a
-      href="/templates/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Templates
-    </a>
-  </nav>
-
-  <div
-    class="
-      flex items-center justify-end gap-3.5
-      max-[1100px]:justify-start
-    "
-  >
-    <div
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        whitespace-nowrap
-      "
-    >
-      SYSTEM / V1.1
-    </div>
-
-    <button
-  id="theme-toggle"
-  class="
-    inline-flex items-center gap-2
-    border border-[var(--border-strong)]
-    bg-[var(--surface)]
-    px-3 py-2
-    text-[10px] font-semibold
-    uppercase tracking-[0.16em]
-    transition-colors
-    hover:bg-[var(--text)]
-    hover:text-[var(--bg)]
-  "
-  aria-label="Toggle color theme"
->
-  <span id="theme-toggle-icon">○</span>
-  <span id="theme-toggle-label">Theme</span>
-</button>
-  </div>
-</header>
-  
-
-
-
-
-<main class="mx-auto w-full max-w-[1800px] px-8 py-12 max-[640px]:px-4">
-
-  <section class="grid min-h-[calc(100vh-160px)] grid-cols-[0.9fr_1.1fr] items-center gap-12 max-[1100px]:grid-cols-1">
-    <div class="max-w-[780px]">
-      <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-        Architecture as Code
-      </p>
-
-      <h1 class="text-[clamp(64px,8vw,132px)] font-semibold leading-[0.9] tracking-[-0.08em]">
-        Software architecture as code.
-      </h1>
-
-      <p class="mt-8 text-xl leading-8 text-[var(--muted)]">
-        ArchScript is an Architecture-as-Code tool for software architects,
-        developers and technical teams. Describe systems with a clean DSL,
-        generate PlantUML diagrams, Markdown documentation and professional
-        architecture reports.
-      </p>
-
-      <div class="mt-10 flex flex-wrap gap-3">
-        <a href="/playground/" class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">
-          Open Playground
-        </a>
-
-        <a href="/docs/" class="inline-flex border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text)] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">
-          Read Documentation
-        </a>
-      </div>
-
-      <div class="mt-10 grid grid-cols-3 gap-4 max-[760px]:grid-cols-1">
-        <div class="border border-[var(--border)] bg-[var(--surface)] p-4">
-          <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
-            DSL
-          </p>
-          <p class="mt-2 text-sm leading-6">
-            A dedicated language for architecture models.
-          </p>
-        </div>
-
-        <div class="border border-[var(--border)] bg-[var(--surface)] p-4">
-          <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
-            Export
-          </p>
-          <p class="mt-2 text-sm leading-6">
-            PlantUML, SVG, PNG, Markdown and PDF.
-          </p>
-        </div>
-
-        <div class="border border-[var(--border)] bg-[var(--surface)] p-4">
-          <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
-            Rules
-          </p>
-          <p class="mt-2 text-sm leading-6">
-            Validate architecture rules directly.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="border border-[var(--border-strong)] bg-[var(--surface)]">
-      <div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px]">
-        <span class="text-[11px] font-bold uppercase tracking-[0.22em]">
-          System Definition
-        </span>
-
-        <span class="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-          .archscript
-        </span>
-      </div>
-
-      <pre class="max-h-[560px] overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 text-[var(--text)] whitespace-pre-wrap">project SaaSPlatform
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.161.1"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>ArchScript</title><meta name=description content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, Markdown documentation and professional architecture reports."><meta name=robots content="index, follow"><meta name=author content="ArchScript"><meta name=theme-color content="#fafafa"><link rel=canonical href=https://archscript.dev/><meta property="og:type" content="website"><meta property="og:site_name" content="ArchScript"><meta property="og:title" content="ArchScript"><meta property="og:description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, Markdown documentation and professional architecture reports."><meta property="og:url" content="https://archscript.dev/"><meta property="og:image" content="https://archscript.dev/images/og-image.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="ArchScript"><meta name=twitter:description content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, Markdown documentation and professional architecture reports."><meta name=twitter:image content="https://archscript.dev/images/og-image.png"><link rel=icon href=/favicon.ico><script type=application/ld+json>{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ArchScript","applicationCategory":"DeveloperApplication","operatingSystem":"Web","url":"https://archscript.dev/","description":"ArchScript is an Architecture-as-Code tool for planning software systems with a DSL and generating PlantUML diagrams, documentation and architecture reports.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"creator":{"@type":"Organization","name":"ArchScript"}}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","name":"ArchScript","url":"https://archscript.dev/","description":"Architecture as Code for software systems.","potentialAction":{"@type":"SearchAction","target":"https://archscript.dev/docs/?q={search_term_string}","query-input":"required name=search_term_string"}}</script><link rel=stylesheet href=/css/app.css></head><body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]"><header class="sticky top-0 z-50
+grid grid-cols-[240px_1fr_240px]
+items-center
+min-h-16
+px-8
+border-b border-[var(--border-strong)]
+bg-[color-mix(in_srgb,var(--bg)_92%,transparent)]
+backdrop-blur-xl
+max-[1100px]:grid-cols-1
+max-[1100px]:gap-4
+max-[1100px]:py-4
+max-[1100px]:px-6"><a href=/ class="flex flex-col gap-0.5"><span class="text-xs font-extrabold
+tracking-[0.22em]
+uppercase">ARCHSCRIPT
+</span><span class="text-[10px]
+tracking-[0.18em]
+uppercase
+text-[var(--muted)]">ARCHITECTURE AS CODE</span></a><nav class="flex justify-center gap-8
+max-[1100px]:justify-start
+max-[1100px]:flex-wrap"><a href=/playground/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Playground
+</a><a href=/docs/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Documentation
+</a><a href=/templates/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Templates</a></nav><div class="flex items-center justify-end gap-3.5
+max-[1100px]:justify-start"><div class="text-[11px]
+tracking-[0.18em]
+uppercase
+whitespace-nowrap">SYSTEM / V1.1</div><button id=theme-toggle class="inline-flex items-center gap-2
+border border-[var(--border-strong)]
+bg-[var(--surface)]
+px-3 py-2
+text-[10px] font-semibold
+uppercase tracking-[0.16em]
+transition-colors
+hover:bg-[var(--text)]
+hover:text-[var(--bg)]" aria-label="Toggle color theme">
+<span id=theme-toggle-icon>○</span>
+<span id=theme-toggle-label>Theme</span></button></div></header><main class="mx-auto w-full max-w-[1800px] px-8 py-12 max-[640px]:px-4"><section class="grid min-h-[calc(100vh-160px)] grid-cols-[0.9fr_1.1fr] items-center gap-12 max-[1100px]:grid-cols-1"><div class=max-w-[780px]><p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Architecture as Code</p><h1 class="text-[clamp(64px,8vw,132px)] font-semibold leading-[0.9] tracking-[-0.08em]">Software architecture as code.</h1><p class="mt-8 text-xl leading-8 text-[var(--muted)]">ArchScript is an Architecture-as-Code tool for software architects,
+developers and technical teams. Describe systems with a clean DSL,
+generate PlantUML diagrams, Markdown documentation and professional
+architecture reports.</p><div class="mt-10 flex flex-wrap gap-3"><a href=/playground/ class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">Open Playground
+</a><a href=/docs/ class="inline-flex border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text)] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Read Documentation</a></div><div class="mt-10 grid grid-cols-3 gap-4 max-[760px]:grid-cols-1"><div class="border border-[var(--border)] bg-[var(--surface)] p-4"><p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">DSL</p><p class="mt-2 text-sm leading-6">A dedicated language for architecture models.</p></div><div class="border border-[var(--border)] bg-[var(--surface)] p-4"><p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">Export</p><p class="mt-2 text-sm leading-6">PlantUML, SVG, PNG, Markdown and PDF.</p></div><div class="border border-[var(--border)] bg-[var(--surface)] p-4"><p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">Rules</p><p class="mt-2 text-sm leading-6">Validate architecture rules directly.</p></div></div></div><div class="border border-[var(--border-strong)] bg-[var(--surface)]"><div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px]"><span class="text-[11px] font-bold uppercase tracking-[0.22em]">System Definition
+</span><span class="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">.archscript</span></div><pre class="max-h-[560px] overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 text-[var(--text)] whitespace-pre-wrap">project SaaSPlatform
 
 environment Production {
   element frontend "Customer Portal" as portal {
@@ -297,291 +78,21 @@ environment Production {
 
 relation portal -> gateway : HTTPS
 relation gateway -> tenant_api : REST
-relation tenant_api -> tenant_db : PostgreSQL</pre>
-    </div>
-  </section>
-
-  <section class="border-t border-[var(--border-strong)] py-16">
-    <div class="mb-10 flex items-end justify-between gap-8 max-[900px]:flex-col max-[900px]:items-start">
-      <div>
-        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-          Why ArchScript?
-        </p>
-
-        <h2 class="max-w-[950px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">
-          More than a diagram generator.
-        </h2>
-      </div>
-
-      <p class="max-w-[520px] leading-7 text-[var(--muted)]">
-        ArchScript stores architecture knowledge in a structured, versionable
-        and exportable format. Diagrams, documentation and reviews are generated
-        from one source of truth.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-3 gap-6 max-[1000px]:grid-cols-1">
-      <article class="border border-[var(--border)] bg-[var(--surface)] p-6">
-        <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-          Model architecture
-        </p>
-
-        <h3 class="text-2xl font-semibold tracking-[-0.04em]">
-          Systems instead of screenshots.
-        </h3>
-
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Capture services, databases, gateways, domains, environments,
-          technologies, ownership and tags in a readable DSL.
-        </p>
-      </article>
-
-      <article class="border border-[var(--border)] bg-[var(--surface)] p-6">
-        <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-          Generate artifacts
-        </p>
-
-        <h3 class="text-2xl font-semibold tracking-[-0.04em]">
-          Diagrams and reports.
-        </h3>
-
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Generate PlantUML diagrams, SVG, PNG, Markdown documentation and
-          branded PDF reports from the same model.
-        </p>
-      </article>
-
-      <article class="border border-[var(--border)] bg-[var(--surface)] p-6">
-        <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-          Review architecture
-        </p>
-
-        <h3 class="text-2xl font-semibold tracking-[-0.04em]">
-          Make rules visible.
-        </h3>
-
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          The rule engine detects risky dependencies and missing metadata such
-          as owners or monitoring for critical systems.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="border-t border-[var(--border-strong)] py-16">
-    <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-      Features
-    </p>
-
-    <div class="grid grid-cols-2 border border-[var(--border-strong)] bg-[var(--surface)] max-[900px]:grid-cols-1">
-      <div class="border-r border-b border-[var(--border)] p-6 max-[900px]:border-r-0">
-        <h3 class="text-2xl font-semibold tracking-[-0.04em]">
-          Live playground
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Write ArchScript on the left and see the generated architecture diagram on the right.
-        </p>
-      </div>
-
-      <div class="border-b border-[var(--border)] p-6">
-        <h3 class="text-2xl font-semibold tracking-[-0.04em]">
-          PlantUML export
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Use PlantUML as an output format for existing documentation and review workflows.
-        </p>
-      </div>
-
-      <div class="border-r border-[var(--border)] p-6 max-[900px]:border-r-0 max-[900px]:border-b">
-        <h3 class="text-2xl font-semibold tracking-[-0.04em]">
-          Markdown documentation
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Automatically generate structured architecture documentation from your model.
-        </p>
-      </div>
-
-      <div class="p-6">
-        <h3 class="text-2xl font-semibold tracking-[-0.04em]">
-          PDF architecture reports
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Export professional reports with diagrams, documentation and architecture review results.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="border-t border-[var(--border-strong)] py-16">
-    <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-      Workflow
-    </p>
-
-    <div class="grid grid-cols-4 border border-[var(--border-strong)] bg-[var(--surface)] max-[1000px]:grid-cols-1">
-      <div class="border-r border-[var(--border)] p-6 max-[1000px]:border-b max-[1000px]:border-r-0">
-        <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-          01
-        </span>
-        <h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">
-          Write DSL
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Describe your system as a text-based architecture model.
-        </p>
-      </div>
-
-      <div class="border-r border-[var(--border)] p-6 max-[1000px]:border-b max-[1000px]:border-r-0">
-        <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-          02
-        </span>
-        <h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">
-          Render diagram
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          ArchScript generates a modern PlantUML-based system view.
-        </p>
-      </div>
-
-      <div class="border-r border-[var(--border)] p-6 max-[1000px]:border-b max-[1000px]:border-r-0">
-        <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-          03
-        </span>
-        <h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">
-          Review rules
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          The rule engine evaluates architecture decisions automatically.
-        </p>
-      </div>
-
-      <div class="p-6">
-        <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-          04
-        </span>
-        <h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">
-          Export report
-        </h3>
-        <p class="mt-4 leading-7 text-[var(--muted)]">
-          Share your architecture as Markdown, image, PlantUML or PDF.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="border-t border-[var(--border-strong)] py-16">
-    <div class="border border-[var(--border-strong)] bg-[var(--surface)] p-8">
-      <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-        Start
-      </p>
-
-      <div class="flex items-end justify-between gap-8 max-[900px]:flex-col max-[900px]:items-start">
-        <h2 class="max-w-[820px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">
-          Build your first architecture model.
-        </h2>
-
-        <a href="/playground/" class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">
-          Open Playground
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-
-  <footer
-  class="
-    border-t border-[var(--border)]
-    px-8 py-8
-    text-[11px]
-    uppercase
-    tracking-[0.12em]
-    text-[var(--muted)]
-    max-[640px]:px-4
-  "
->
-  <div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1">
-    <div>
-      <p class="text-[var(--text)]">
-        ARCHSCRIPT
-      </p>
-
-      <p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">
-        Architecture as Code for software systems. Built with Rust, WebAssembly,
-        Hugo and PlantUML.
-      </p>
-
-      <p class="mt-5">
-        © 2026 ArchScript
-      </p>
-    </div>
-
-    <div>
-      <p class="mb-4 text-[var(--text)]">
-        Product
-      </p>
-
-      <nav class="flex flex-col gap-3">
-        <a href="/playground/" class="hover:text-[var(--text)]">
-          Playground
-        </a>
-
-        <a href="/docs/" class="hover:text-[var(--text)]">
-          Documentation
-        </a>
-
-        <a href="/templates/" class="hover:text-[var(--text)]">
-          Templates
-        </a>
-      </nav>
-    </div>
-
-    <div>
-      <p class="mb-4 text-[var(--text)]">
-        Project
-      </p>
-
-      <nav class="flex flex-col gap-3">
-        <a
-          href="https://floriancode.de"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          FlorianCode.de
-        </a>
-
-        <a
-          href="https://github.com/schlummer13"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          GitHub / schlummer13
-        </a>
-
-        <a
-          href="https://floriancode.de/impressum/"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          Imprint
-        </a>
-
-        <a
-          href="https://floriancode.de/datenschutz/"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          Privacy Policy
-        </a>
-      </nav>
-    </div>
-  </div>
-</footer>
-  <script src="/js/theme.js"></script>
-  <script defer src="https://tracking.floriancode.de/script.js" data-website-id="a1267098-714e-4408-a9a1-c4f8145e9efb"></script>
-</body>
-</html>
+relation tenant_api -> tenant_db : PostgreSQL</pre></div></section><section class="border-t border-[var(--border-strong)] py-16"><div class="mb-10 flex items-end justify-between gap-8 max-[900px]:flex-col max-[900px]:items-start"><div><p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Why ArchScript?</p><h2 class="max-w-[950px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">More than a diagram generator.</h2></div><p class="max-w-[520px] leading-7 text-[var(--muted)]">ArchScript stores architecture knowledge in a structured, versionable
+and exportable format. Diagrams, documentation and reviews are generated
+from one source of truth.</p></div><div class="grid grid-cols-3 gap-6 max-[1000px]:grid-cols-1"><article class="border border-[var(--border)] bg-[var(--surface)] p-6"><p class="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Model architecture</p><h3 class="text-2xl font-semibold tracking-[-0.04em]">Systems instead of screenshots.</h3><p class="mt-4 leading-7 text-[var(--muted)]">Capture services, databases, gateways, domains, environments,
+technologies, ownership and tags in a readable DSL.</p></article><article class="border border-[var(--border)] bg-[var(--surface)] p-6"><p class="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Generate artifacts</p><h3 class="text-2xl font-semibold tracking-[-0.04em]">Diagrams and reports.</h3><p class="mt-4 leading-7 text-[var(--muted)]">Generate PlantUML diagrams, SVG, PNG, Markdown documentation and
+branded PDF reports from the same model.</p></article><article class="border border-[var(--border)] bg-[var(--surface)] p-6"><p class="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Review architecture</p><h3 class="text-2xl font-semibold tracking-[-0.04em]">Make rules visible.</h3><p class="mt-4 leading-7 text-[var(--muted)]">The rule engine detects risky dependencies and missing metadata such
+as owners or monitoring for critical systems.</p></article></div></section><section class="border-t border-[var(--border-strong)] py-16"><p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Features</p><div class="grid grid-cols-2 border border-[var(--border-strong)] bg-[var(--surface)] max-[900px]:grid-cols-1"><div class="border-r border-b border-[var(--border)] p-6 max-[900px]:border-r-0"><h3 class="text-2xl font-semibold tracking-[-0.04em]">Live playground</h3><p class="mt-4 leading-7 text-[var(--muted)]">Write ArchScript on the left and see the generated architecture diagram on the right.</p></div><div class="border-b border-[var(--border)] p-6"><h3 class="text-2xl font-semibold tracking-[-0.04em]">PlantUML export</h3><p class="mt-4 leading-7 text-[var(--muted)]">Use PlantUML as an output format for existing documentation and review workflows.</p></div><div class="border-r border-[var(--border)] p-6 max-[900px]:border-r-0 max-[900px]:border-b"><h3 class="text-2xl font-semibold tracking-[-0.04em]">Markdown documentation</h3><p class="mt-4 leading-7 text-[var(--muted)]">Automatically generate structured architecture documentation from your model.</p></div><div class=p-6><h3 class="text-2xl font-semibold tracking-[-0.04em]">PDF architecture reports</h3><p class="mt-4 leading-7 text-[var(--muted)]">Export professional reports with diagrams, documentation and architecture review results.</p></div></div></section><section class="border-t border-[var(--border-strong)] py-16"><p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Workflow</p><div class="grid grid-cols-4 border border-[var(--border-strong)] bg-[var(--surface)] max-[1000px]:grid-cols-1"><div class="border-r border-[var(--border)] p-6 max-[1000px]:border-b max-[1000px]:border-r-0"><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">01</span><h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">Write DSL</h3><p class="mt-4 leading-7 text-[var(--muted)]">Describe your system as a text-based architecture model.</p></div><div class="border-r border-[var(--border)] p-6 max-[1000px]:border-b max-[1000px]:border-r-0"><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">02</span><h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">Render diagram</h3><p class="mt-4 leading-7 text-[var(--muted)]">ArchScript generates a modern PlantUML-based system view.</p></div><div class="border-r border-[var(--border)] p-6 max-[1000px]:border-b max-[1000px]:border-r-0"><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">03</span><h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">Review rules</h3><p class="mt-4 leading-7 text-[var(--muted)]">The rule engine evaluates architecture decisions automatically.</p></div><div class=p-6><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">04</span><h3 class="mt-8 text-2xl font-semibold tracking-[-0.04em]">Export report</h3><p class="mt-4 leading-7 text-[var(--muted)]">Share your architecture as Markdown, image, PlantUML or PDF.</p></div></div></section><section class="border-t border-[var(--border-strong)] py-16"><div class="border border-[var(--border-strong)] bg-[var(--surface)] p-8"><p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Start</p><div class="flex items-end justify-between gap-8 max-[900px]:flex-col max-[900px]:items-start"><h2 class="max-w-[820px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">Build your first architecture model.</h2><a href=/playground/ class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">Open Playground</a></div></div></section></main><footer class="border-t border-[var(--border)]
+px-8 py-8
+text-[11px]
+uppercase
+tracking-[0.12em]
+text-[var(--muted)]
+max-[640px]:px-4"><div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1"><div><p class=text-[var(--text)]>ARCHSCRIPT</p><p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">Architecture as Code for software systems. Built with Rust, WebAssembly,
+Hugo and PlantUML.</p><p class=mt-5>© 2026 ArchScript</p></div><div><p class="mb-4 text-[var(--text)]">Product</p><nav class="flex flex-col gap-3"><a href=/playground/ class=hover:text-[var(--text)]>Playground
+</a><a href=/docs/ class=hover:text-[var(--text)]>Documentation
+</a><a href=/templates/ class=hover:text-[var(--text)]>Templates</a></nav></div><div><p class="mb-4 text-[var(--text)]">Project</p><nav class="flex flex-col gap-3"><a href=https://floriancode.de target=_blank rel=noreferrer class=hover:text-[var(--text)]>FlorianCode.de
+</a><a href=https://github.com/schlummer13 target=_blank rel=noreferrer class=hover:text-[var(--text)]>GitHub / schlummer13
+</a><a href=https://floriancode.de/impressum/ target=_blank rel=noreferrer class=hover:text-[var(--text)]>Imprint
+</a><a href=https://floriancode.de/datenschutz/ target=_blank rel=noreferrer class=hover:text-[var(--text)]>Privacy Policy</a></nav></div></div></footer><script src=/js/theme.js></script><script defer src=https://tracking.floriancode.de/script.js data-website-id=a1267098-714e-4408-a9a1-c4f8145e9efb></script></body></html>

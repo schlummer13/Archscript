@@ -1,360 +1,71 @@
-<!doctype html>
-<html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-
-
-
-
-<title>Playground · ArchScript</title>
-
-<meta name="description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, documentation and architecture reports.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="ArchScript">
-<meta name="theme-color" content="#fafafa">
-
-<link rel="canonical" href="http://localhost:1313/playground/">
-
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="ArchScript">
-<meta property="og:title" content="Playground · ArchScript">
-<meta property="og:description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, documentation and architecture reports.">
-<meta property="og:url" content="http://localhost:1313/playground/">
-<meta property="og:image" content="http://localhost:1313/images/og-image.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Playground · ArchScript">
-<meta name="twitter:description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, documentation and architecture reports.">
-<meta name="twitter:image" content="http://localhost:1313/images/og-image.png">
-
-
-
-  <link rel="stylesheet" href="/css/app.css">
-</head>
-<body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]">
-  <header
-  class="
-    sticky top-0 z-50
-    grid grid-cols-[240px_1fr_240px]
-    items-center
-    min-h-16
-    px-8
-    border-b border-[var(--border-strong)]
-    bg-[color-mix(in_srgb,var(--bg)_92%,transparent)]
-    backdrop-blur-xl
-    max-[1100px]:grid-cols-1
-    max-[1100px]:gap-4
-    max-[1100px]:py-4
-    max-[1100px]:px-6
-  "
->
-  <a href="/" class="flex flex-col gap-0.5">
-    <span
-      class="
-        text-xs font-extrabold
-        tracking-[0.22em]
-        uppercase
-      "
-    >
-      ARCHSCRIPT
-    </span>
-
-    <span
-      class="
-        text-[10px]
-        tracking-[0.18em]
-        uppercase
-        text-[var(--muted)]
-      "
-    >
-      ARCHITECTURE AS CODE
-    </span>
-  </a>
-
-  <nav
-    class="
-      flex justify-center gap-8
-      max-[1100px]:justify-start
-      max-[1100px]:flex-wrap
-    "
-  >
-    <a
-      href="/playground/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Playground
-    </a>
-
-    <a
-      href="/docs/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Documentation
-    </a>
-
-    <a
-      href="/templates/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Templates
-    </a>
-  </nav>
-
-  <div
-    class="
-      flex items-center justify-end gap-3.5
-      max-[1100px]:justify-start
-    "
-  >
-    <div
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        whitespace-nowrap
-      "
-    >
-      SYSTEM / V1.1
-    </div>
-
-    <button
-  id="theme-toggle"
-  class="
-    inline-flex items-center gap-2
-    border border-[var(--border-strong)]
-    bg-[var(--surface)]
-    px-3 py-2
-    text-[10px] font-semibold
-    uppercase tracking-[0.16em]
-    transition-colors
-    hover:bg-[var(--text)]
-    hover:text-[var(--bg)]
-  "
-  aria-label="Toggle color theme"
->
-  <span id="theme-toggle-icon">○</span>
-  <span id="theme-toggle-label">Theme</span>
-</button>
-  </div>
-</header>
-  
-
-
-
-<main class="mx-auto min-h-[calc(100vh-64px)] w-full max-w-[1800px] px-8 py-9 max-[640px]:px-4">
-  <section class="mb-7 grid grid-cols-[1fr_auto] items-end gap-6 max-[1100px]:grid-cols-1">
-    <div>
-      <p class="mb-3.5 text-xs font-semibold uppercase tracking-[0.45em]">
-        ArchScript Playground
-      </p>
-
-      <h1 class="m-0 text-[clamp(42px,5vw,88px)] leading-[0.95] tracking-[-0.07em]">
-        Editor
-      </h1>
-    </div>
-
-    <div class="flex flex-wrap justify-end gap-2.5 max-[1100px]:justify-start">
-      <select
-        id="template-select"
-        class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.14em]"
-      >
-        <option value="default">Default</option>
-        <option value="blank">Blank Project</option>
-        <option value="webapp">Web Application</option>
-        <option value="microservices">Microservices</option>
-        <option value="ddd">DDD Architecture</option>
-        <option value="event">Event Driven</option>
-        <option value="saas">SaaS Platform</option>
-      </select>
-
-      <button id="render-btn" class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Render</button>
-      <button id="download-source-btn" class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export .archscript</button>
-      <button id="download-puml-btn" class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export PlantUML</button>
-      <button id="download-docs-btn" class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export Docs</button>
-      <button id="download-svg-btn" class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export SVG</button>
-      <button id="download-png-btn" class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export PNG</button>
-      <button id="download-pdf-btn" class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export PDF</button>
-    </div>
-  </section>
-
-  <section class="grid items-start gap-6 grid-cols-[minmax(460px,0.95fr)_minmax(520px,1.05fr)] max-[1100px]:grid-cols-1">
-    <div class="overflow-hidden border border-[var(--border-strong)] bg-[var(--surface)]">
-      <div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px] text-[11px] font-bold uppercase tracking-[0.22em]">
-        <span>Code</span>
-      </div>
-
-      <div id="source" class="editor"></div>
-    </div>
-
-    <div class="overflow-hidden border border-[var(--border-strong)] bg-[var(--surface)]">
-      <div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px] text-[11px] font-bold uppercase tracking-[0.22em]">
-        <span>Preview</span>
-      </div>
-
-      <div
-  id="diagram"
-  class="
-    diagram
-    min-h-[520px]
-    overflow-auto
-    border-b
-    border-[var(--border)]
-    bg-white
-    p-6
-    text-black
-  "
->
-</div>
-
-      <details class="mx-[18px] mt-[18px] border border-[var(--border)] bg-[var(--surface)]">
-        <summary class="cursor-pointer px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em]">
-          PlantUML Source
-        </summary>
-
-        <pre
-          id="plantuml"
-          class="overflow-auto bg-[var(--surface-soft)] p-4 font-mono text-xs leading-7 whitespace-pre-wrap"
-        ></pre>
-      </details>
-
-      <details class="mx-[18px] mt-[18px] border border-[var(--border)] bg-[var(--surface)]">
-        <summary class="cursor-pointer px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em]">
-          Documentation
-        </summary>
-
-        <pre
-          id="documentation"
-          class="overflow-auto bg-[var(--surface-soft)] p-4 font-mono text-xs leading-7 whitespace-pre-wrap"
-        ></pre>
-      </details>
-
-      <div id="violations" class="m-[18px]"></div>
-      <div id="diagnostics" class="m-[18px]"></div>
-    </div>
-  </section>
-</main>
-
-
-
-
-
-<script
-  type="module"
-  src="/js/playground.min.d60c1ab3497f86ec6ddaa6d7854130be7f56590e53127b2a3cd22b0dfa8628e0.js"
-  integrity="sha256-1gwas0l/huxt2qbXhUEwvn9WWQ5TEnsqPNIrDfqGKOA="
-></script>
-
-
-  <footer
-  class="
-    border-t border-[var(--border)]
-    px-8 py-8
-    text-[11px]
-    uppercase
-    tracking-[0.12em]
-    text-[var(--muted)]
-    max-[640px]:px-4
-  "
->
-  <div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1">
-    <div>
-      <p class="text-[var(--text)]">
-        ARCHSCRIPT
-      </p>
-
-      <p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">
-        Architecture as Code for software systems. Built with Rust, WebAssembly,
-        Hugo and PlantUML.
-      </p>
-
-      <p class="mt-5">
-        © 2026 ArchScript
-      </p>
-    </div>
-
-    <div>
-      <p class="mb-4 text-[var(--text)]">
-        Product
-      </p>
-
-      <nav class="flex flex-col gap-3">
-        <a href="/playground/" class="hover:text-[var(--text)]">
-          Playground
-        </a>
-
-        <a href="/docs/" class="hover:text-[var(--text)]">
-          Documentation
-        </a>
-
-        <a href="/templates/" class="hover:text-[var(--text)]">
-          Templates
-        </a>
-      </nav>
-    </div>
-
-    <div>
-      <p class="mb-4 text-[var(--text)]">
-        Project
-      </p>
-
-      <nav class="flex flex-col gap-3">
-        <a
-          href="https://floriancode.de"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          FlorianCode.de
-        </a>
-
-        <a
-          href="https://github.com/schlummer13"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          GitHub / schlummer13
-        </a>
-
-        <a
-          href="https://floriancode.de/impressum/"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          Imprint
-        </a>
-
-        <a
-          href="https://floriancode.de/datenschutz/"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          Privacy Policy
-        </a>
-      </nav>
-    </div>
-  </div>
-</footer>
-  <script src="/js/theme.js"></script>
-  <script defer src="https://tracking.floriancode.de/script.js" data-website-id="a1267098-714e-4408-a9a1-c4f8145e9efb"></script>
-</body>
-</html>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Playground · ArchScript</title><meta name=description content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, documentation and architecture reports."><meta name=robots content="index, follow"><meta name=author content="ArchScript"><meta name=theme-color content="#fafafa"><link rel=canonical href=https://archscript.dev/playground/><meta property="og:type" content="article"><meta property="og:site_name" content="ArchScript"><meta property="og:title" content="Playground · ArchScript"><meta property="og:description" content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, documentation and architecture reports."><meta property="og:url" content="https://archscript.dev/playground/"><meta property="og:image" content="https://archscript.dev/images/og-image.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Playground · ArchScript"><meta name=twitter:description content="ArchScript is an Architecture-as-Code tool for software architecture. Plan systems with a DSL, generate PlantUML diagrams, documentation and architecture reports."><meta name=twitter:image content="https://archscript.dev/images/og-image.png"><link rel=icon href=/favicon.ico><link rel=stylesheet href=/css/app.css></head><body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]"><header class="sticky top-0 z-50
+grid grid-cols-[240px_1fr_240px]
+items-center
+min-h-16
+px-8
+border-b border-[var(--border-strong)]
+bg-[color-mix(in_srgb,var(--bg)_92%,transparent)]
+backdrop-blur-xl
+max-[1100px]:grid-cols-1
+max-[1100px]:gap-4
+max-[1100px]:py-4
+max-[1100px]:px-6"><a href=/ class="flex flex-col gap-0.5"><span class="text-xs font-extrabold
+tracking-[0.22em]
+uppercase">ARCHSCRIPT
+</span><span class="text-[10px]
+tracking-[0.18em]
+uppercase
+text-[var(--muted)]">ARCHITECTURE AS CODE</span></a><nav class="flex justify-center gap-8
+max-[1100px]:justify-start
+max-[1100px]:flex-wrap"><a href=/playground/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Playground
+</a><a href=/docs/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Documentation
+</a><a href=/templates/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Templates</a></nav><div class="flex items-center justify-end gap-3.5
+max-[1100px]:justify-start"><div class="text-[11px]
+tracking-[0.18em]
+uppercase
+whitespace-nowrap">SYSTEM / V1.1</div><button id=theme-toggle class="inline-flex items-center gap-2
+border border-[var(--border-strong)]
+bg-[var(--surface)]
+px-3 py-2
+text-[10px] font-semibold
+uppercase tracking-[0.16em]
+transition-colors
+hover:bg-[var(--text)]
+hover:text-[var(--bg)]" aria-label="Toggle color theme">
+<span id=theme-toggle-icon>○</span>
+<span id=theme-toggle-label>Theme</span></button></div></header><main class="mx-auto min-h-[calc(100vh-64px)] w-full max-w-[1800px] px-8 py-9 max-[640px]:px-4"><section class="mb-7 grid grid-cols-[1fr_auto] items-end gap-6 max-[1100px]:grid-cols-1"><div><p class="mb-3.5 text-xs font-semibold uppercase tracking-[0.45em]">ArchScript Playground</p><h1 class="m-0 text-[clamp(42px,5vw,88px)] leading-[0.95] tracking-[-0.07em]">Editor</h1></div><div class="flex flex-wrap justify-end gap-2.5 max-[1100px]:justify-start"><select id=template-select class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.14em]"><option value=default>Default</option><option value=blank>Blank Project</option><option value=webapp>Web Application</option><option value=microservices>Microservices</option><option value=ddd>DDD Architecture</option><option value=event>Event Driven</option><option value=saas>SaaS Platform</option></select>
+<button id=render-btn class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Render</button>
+<button id=download-source-btn class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export .archscript</button>
+<button id=download-puml-btn class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export PlantUML</button>
+<button id=download-docs-btn class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export Docs</button>
+<button id=download-svg-btn class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export SVG</button>
+<button id=download-png-btn class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export PNG</button>
+<button id=download-pdf-btn class="border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-[11px] text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Export PDF</button></div></section><section class="grid items-start gap-6 grid-cols-[minmax(460px,0.95fr)_minmax(520px,1.05fr)] max-[1100px]:grid-cols-1"><div class="overflow-hidden border border-[var(--border-strong)] bg-[var(--surface)]"><div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px] text-[11px] font-bold uppercase tracking-[0.22em]"><span>Code</span></div><div id=source class=editor></div></div><div class="overflow-hidden border border-[var(--border-strong)] bg-[var(--surface)]"><div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px] text-[11px] font-bold uppercase tracking-[0.22em]"><span>Preview</span></div><div id=diagram class="diagram
+min-h-[520px]
+overflow-auto
+border-b
+border-[var(--border)]
+bg-white
+p-6
+text-black"></div><details class="mx-[18px] mt-[18px] border border-[var(--border)] bg-[var(--surface)]"><summary class="cursor-pointer px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em]">PlantUML Source</summary><pre id=plantuml class="overflow-auto bg-[var(--surface-soft)] p-4 font-mono text-xs leading-7 whitespace-pre-wrap"></pre></details><details class="mx-[18px] mt-[18px] border border-[var(--border)] bg-[var(--surface)]"><summary class="cursor-pointer px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em]">Documentation</summary><pre id=documentation class="overflow-auto bg-[var(--surface-soft)] p-4 font-mono text-xs leading-7 whitespace-pre-wrap"></pre></details><div id=violations class=m-[18px]></div><div id=diagnostics class=m-[18px]></div></div></section></main><script type=module src=/js/playground.min.d60c1ab3497f86ec6ddaa6d7854130be7f56590e53127b2a3cd22b0dfa8628e0.js integrity="sha256-1gwas0l/huxt2qbXhUEwvn9WWQ5TEnsqPNIrDfqGKOA="></script><footer class="border-t border-[var(--border)]
+px-8 py-8
+text-[11px]
+uppercase
+tracking-[0.12em]
+text-[var(--muted)]
+max-[640px]:px-4"><div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1"><div><p class=text-[var(--text)]>ARCHSCRIPT</p><p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">Architecture as Code for software systems. Built with Rust, WebAssembly,
+Hugo and PlantUML.</p><p class=mt-5>© 2026 ArchScript</p></div><div><p class="mb-4 text-[var(--text)]">Product</p><nav class="flex flex-col gap-3"><a href=/playground/ class=hover:text-[var(--text)]>Playground
+</a><a href=/docs/ class=hover:text-[var(--text)]>Documentation
+</a><a href=/templates/ class=hover:text-[var(--text)]>Templates</a></nav></div><div><p class="mb-4 text-[var(--text)]">Project</p><nav class="flex flex-col gap-3"><a href=https://floriancode.de target=_blank rel=noreferrer class=hover:text-[var(--text)]>FlorianCode.de
+</a><a href=https://github.com/schlummer13 target=_blank rel=noreferrer class=hover:text-[var(--text)]>GitHub / schlummer13
+</a><a href=https://floriancode.de/impressum/ target=_blank rel=noreferrer class=hover:text-[var(--text)]>Imprint
+</a><a href=https://floriancode.de/datenschutz/ target=_blank rel=noreferrer class=hover:text-[var(--text)]>Privacy Policy</a></nav></div></div></footer><script src=/js/theme.js></script><script defer src=https://tracking.floriancode.de/script.js data-website-id=a1267098-714e-4408-a9a1-c4f8145e9efb></script></body></html>

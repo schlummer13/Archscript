@@ -1,470 +1,54 @@
-<!doctype html>
-<html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-
-
-
-
-<title>Templates · ArchScript</title>
-
-<meta name="description" content="Explore ArchScript templates for web applications, microservices, DDD architectures, event-driven systems and SaaS platforms.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="ArchScript">
-<meta name="theme-color" content="#fafafa">
-
-<link rel="canonical" href="http://localhost:1313/templates/">
-
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="ArchScript">
-<meta property="og:title" content="Templates · ArchScript">
-<meta property="og:description" content="Explore ArchScript templates for web applications, microservices, DDD architectures, event-driven systems and SaaS platforms.">
-<meta property="og:url" content="http://localhost:1313/templates/">
-<meta property="og:image" content="http://localhost:1313/images/og-image.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Templates · ArchScript">
-<meta name="twitter:description" content="Explore ArchScript templates for web applications, microservices, DDD architectures, event-driven systems and SaaS platforms.">
-<meta name="twitter:image" content="http://localhost:1313/images/og-image.png">
-
-
-
-  <link rel="stylesheet" href="/css/app.css">
-</head>
-<body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]">
-  <header
-  class="
-    sticky top-0 z-50
-    grid grid-cols-[240px_1fr_240px]
-    items-center
-    min-h-16
-    px-8
-    border-b border-[var(--border-strong)]
-    bg-[color-mix(in_srgb,var(--bg)_92%,transparent)]
-    backdrop-blur-xl
-    max-[1100px]:grid-cols-1
-    max-[1100px]:gap-4
-    max-[1100px]:py-4
-    max-[1100px]:px-6
-  "
->
-  <a href="/" class="flex flex-col gap-0.5">
-    <span
-      class="
-        text-xs font-extrabold
-        tracking-[0.22em]
-        uppercase
-      "
-    >
-      ARCHSCRIPT
-    </span>
-
-    <span
-      class="
-        text-[10px]
-        tracking-[0.18em]
-        uppercase
-        text-[var(--muted)]
-      "
-    >
-      ARCHITECTURE AS CODE
-    </span>
-  </a>
-
-  <nav
-    class="
-      flex justify-center gap-8
-      max-[1100px]:justify-start
-      max-[1100px]:flex-wrap
-    "
-  >
-    <a
-      href="/playground/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Playground
-    </a>
-
-    <a
-      href="/docs/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Documentation
-    </a>
-
-    <a
-      href="/templates/"
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        hover:text-[var(--muted)]
-      "
-    >
-      Templates
-    </a>
-  </nav>
-
-  <div
-    class="
-      flex items-center justify-end gap-3.5
-      max-[1100px]:justify-start
-    "
-  >
-    <div
-      class="
-        text-[11px]
-        tracking-[0.18em]
-        uppercase
-        whitespace-nowrap
-      "
-    >
-      SYSTEM / V1.1
-    </div>
-
-    <button
-  id="theme-toggle"
-  class="
-    inline-flex items-center gap-2
-    border border-[var(--border-strong)]
-    bg-[var(--surface)]
-    px-3 py-2
-    text-[10px] font-semibold
-    uppercase tracking-[0.16em]
-    transition-colors
-    hover:bg-[var(--text)]
-    hover:text-[var(--bg)]
-  "
-  aria-label="Toggle color theme"
->
-  <span id="theme-toggle-icon">○</span>
-  <span id="theme-toggle-label">Theme</span>
-</button>
-  </div>
-</header>
-  
-
-
-
-
-<main class="mx-auto w-full max-w-[1600px] px-8 py-14 max-[640px]:px-4">
-
-  <section class="mb-14">
-    <p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-      Templates
-    </p>
-
-    <h1 class="max-w-[1100px] text-[clamp(56px,7vw,120px)] font-semibold leading-[0.9] tracking-[-0.08em]">
-      Architecture starting points.
-    </h1>
-
-    <p class="mt-8 max-w-[820px] text-lg leading-8 text-[var(--muted)]">
-      Start with predefined ArchScript templates for common software architectures.
-      Each template gives you a structured model with elements, relations, metadata
-      and architecture rules ready to explore in the Playground.
-    </p>
-
-    <div class="mt-10 flex flex-wrap gap-3">
-      <a href="/playground/" class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">
-        Open Playground
-      </a>
-
-      <a href="/docs/" class="inline-flex border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text)] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">
-        Read Documentation
-      </a>
-    </div>
-  </section>
-
-  <section class="grid grid-cols-3 gap-6 max-[1100px]:grid-cols-2 max-[760px]:grid-cols-1">
-    <article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]">
-  <div class="mb-8 flex items-start justify-between gap-6">
-    <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-      Blank Project
-    </p>
-
-    <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      01
-    </span>
-  </div>
-
-  <h2 class="text-2xl font-semibold tracking-[-0.04em]">
-    Start from scratch
-  </h2>
-
-  <p class="mt-4 leading-7 text-[var(--muted)]">
-    A minimal architecture with a frontend, service and database. Ideal for learning the basic DSL syntax.
-  </p>
-
-  <div class="mt-8 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Best for
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Learning, experiments, small tools
-    </p>
-  </div>
-
-  <div class="mt-5 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Includes
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Project, elements, relations
-    </p>
-  </div>
-</article>
-
-    <article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]">
-  <div class="mb-8 flex items-start justify-between gap-6">
-    <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-      Web Application
-    </p>
-
-    <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      02
-    </span>
-  </div>
-
-  <h2 class="text-2xl font-semibold tracking-[-0.04em]">
-    Classic web application
-  </h2>
-
-  <p class="mt-4 leading-7 text-[var(--muted)]">
-    A standard client/backend/database architecture with clear boundaries and production-ready metadata.
-  </p>
-
-  <div class="mt-8 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Best for
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Web apps, portals, CRUD systems
-    </p>
-  </div>
-
-  <div class="mt-5 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Includes
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Boundaries, frontend, service, database
-    </p>
-  </div>
-</article>
-
-    <article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]">
-  <div class="mb-8 flex items-start justify-between gap-6">
-    <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-      Microservices
-    </p>
-
-    <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      03
-    </span>
-  </div>
-
-  <h2 class="text-2xl font-semibold tracking-[-0.04em]">
-    Service-oriented platform
-  </h2>
-
-  <p class="mt-4 leading-7 text-[var(--muted)]">
-    Multiple domains with dedicated services, databases and an event bus for asynchronous communication.
-  </p>
-
-  <div class="mt-8 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Best for
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Distributed systems, platform teams
-    </p>
-  </div>
-
-  <div class="mt-5 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Includes
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Domains, services, event bus
-    </p>
-  </div>
-</article>
-
-    <article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]">
-  <div class="mb-8 flex items-start justify-between gap-6">
-    <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-      DDD Architecture
-    </p>
-
-    <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      04
-    </span>
-  </div>
-
-  <h2 class="text-2xl font-semibold tracking-[-0.04em]">
-    Bounded contexts
-  </h2>
-
-  <p class="mt-4 leading-7 text-[var(--muted)]">
-    Model business domains and relationships between bounded contexts using explicit service ownership.
-  </p>
-
-  <div class="mt-8 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Best for
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      DDD, modular monoliths, domain modeling
-    </p>
-  </div>
-
-  <div class="mt-5 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Includes
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Domains, services, databases
-    </p>
-  </div>
-</article>
-
-    <article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]">
-  <div class="mb-8 flex items-start justify-between gap-6">
-    <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-      Event Driven
-    </p>
-
-    <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      05
-    </span>
-  </div>
-
-  <h2 class="text-2xl font-semibold tracking-[-0.04em]">
-    Asynchronous architecture
-  </h2>
-
-  <p class="mt-4 leading-7 text-[var(--muted)]">
-    Command API, event bus, projection worker and read model for event-driven system design.
-  </p>
-
-  <div class="mt-8 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Best for
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Event sourcing, projections, async workflows
-    </p>
-  </div>
-
-  <div class="mt-5 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Includes
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Event bus, workers, read model
-    </p>
-  </div>
-</article>
-
-    <article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]">
-  <div class="mb-8 flex items-start justify-between gap-6">
-    <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
-      SaaS Platform
-    </p>
-
-    <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      06
-    </span>
-  </div>
-
-  <h2 class="text-2xl font-semibold tracking-[-0.04em]">
-    Production SaaS system
-  </h2>
-
-  <p class="mt-4 leading-7 text-[var(--muted)]">
-    A realistic SaaS architecture with CDN, portal, API gateway, tenant API, database and identity provider.
-  </p>
-
-  <div class="mt-8 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Best for
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      SaaS products, production systems
-    </p>
-  </div>
-
-  <div class="mt-5 border-t border-[var(--border)] pt-5">
-    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-      Includes
-    </p>
-
-    <p class="mt-2 text-sm leading-6">
-      Environment, gateway, identity provider
-    </p>
-  </div>
-</article>
-  </section>
-
-  <section class="mt-16 border-t border-[var(--border-strong)] pt-16">
-    <div class="grid grid-cols-[0.9fr_1.1fr] gap-8 max-[1000px]:grid-cols-1">
-      <div>
-        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-          Example
-        </p>
-
-        <h2 class="max-w-[780px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">
-          SaaS Platform Template
-        </h2>
-
-        <p class="mt-6 max-w-[620px] leading-7 text-[var(--muted)]">
-          The SaaS template demonstrates how ArchScript can model production
-          environments, critical systems, owners, monitoring and infrastructure
-          dependencies in one readable source file.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/playground/" class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">
-            Try Template
-          </a>
-        </div>
-      </div>
-
-      <div class="border border-[var(--border-strong)] bg-[var(--surface)]">
-        <div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px]">
-          <span class="text-[11px] font-bold uppercase tracking-[0.22em]">
-            Template Source
-          </span>
-
-          <span class="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-            SaaS Platform
-          </span>
-        </div>
-
-        <pre class="max-h-[640px] overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 text-[var(--text)] whitespace-pre-wrap">project SaaSPlatform
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Templates · ArchScript</title><meta name=description content="Explore ArchScript templates for web applications, microservices, DDD architectures, event-driven systems and SaaS platforms."><meta name=robots content="index, follow"><meta name=author content="ArchScript"><meta name=theme-color content="#fafafa"><link rel=canonical href=https://archscript.dev/templates/><meta property="og:type" content="article"><meta property="og:site_name" content="ArchScript"><meta property="og:title" content="Templates · ArchScript"><meta property="og:description" content="Explore ArchScript templates for web applications, microservices, DDD architectures, event-driven systems and SaaS platforms."><meta property="og:url" content="https://archscript.dev/templates/"><meta property="og:image" content="https://archscript.dev/images/og-image.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Templates · ArchScript"><meta name=twitter:description content="Explore ArchScript templates for web applications, microservices, DDD architectures, event-driven systems and SaaS platforms."><meta name=twitter:image content="https://archscript.dev/images/og-image.png"><link rel=icon href=/favicon.ico><link rel=stylesheet href=/css/app.css></head><body class="arch-grid min-h-screen bg-[var(--bg)] text-[var(--text)]"><header class="sticky top-0 z-50
+grid grid-cols-[240px_1fr_240px]
+items-center
+min-h-16
+px-8
+border-b border-[var(--border-strong)]
+bg-[color-mix(in_srgb,var(--bg)_92%,transparent)]
+backdrop-blur-xl
+max-[1100px]:grid-cols-1
+max-[1100px]:gap-4
+max-[1100px]:py-4
+max-[1100px]:px-6"><a href=/ class="flex flex-col gap-0.5"><span class="text-xs font-extrabold
+tracking-[0.22em]
+uppercase">ARCHSCRIPT
+</span><span class="text-[10px]
+tracking-[0.18em]
+uppercase
+text-[var(--muted)]">ARCHITECTURE AS CODE</span></a><nav class="flex justify-center gap-8
+max-[1100px]:justify-start
+max-[1100px]:flex-wrap"><a href=/playground/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Playground
+</a><a href=/docs/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Documentation
+</a><a href=/templates/ class="text-[11px]
+tracking-[0.18em]
+uppercase
+hover:text-[var(--muted)]">Templates</a></nav><div class="flex items-center justify-end gap-3.5
+max-[1100px]:justify-start"><div class="text-[11px]
+tracking-[0.18em]
+uppercase
+whitespace-nowrap">SYSTEM / V1.1</div><button id=theme-toggle class="inline-flex items-center gap-2
+border border-[var(--border-strong)]
+bg-[var(--surface)]
+px-3 py-2
+text-[10px] font-semibold
+uppercase tracking-[0.16em]
+transition-colors
+hover:bg-[var(--text)]
+hover:text-[var(--bg)]" aria-label="Toggle color theme">
+<span id=theme-toggle-icon>○</span>
+<span id=theme-toggle-label>Theme</span></button></div></header><main class="mx-auto w-full max-w-[1600px] px-8 py-14 max-[640px]:px-4"><section class=mb-14><p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Templates</p><h1 class="max-w-[1100px] text-[clamp(56px,7vw,120px)] font-semibold leading-[0.9] tracking-[-0.08em]">Architecture starting points.</h1><p class="mt-8 max-w-[820px] text-lg leading-8 text-[var(--muted)]">Start with predefined ArchScript templates for common software architectures.
+Each template gives you a structured model with elements, relations, metadata
+and architecture rules ready to explore in the Playground.</p><div class="mt-10 flex flex-wrap gap-3"><a href=/playground/ class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">Open Playground
+</a><a href=/docs/ class="inline-flex border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text)] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)]">Read Documentation</a></div></section><section class="grid grid-cols-3 gap-6 max-[1100px]:grid-cols-2 max-[760px]:grid-cols-1"><article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]"><div class="mb-8 flex items-start justify-between gap-6"><p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Blank Project</p><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">01</span></div><h2 class="text-2xl font-semibold tracking-[-0.04em]">Start from scratch</h2><p class="mt-4 leading-7 text-[var(--muted)]">A minimal architecture with a frontend, service and database. Ideal for learning the basic DSL syntax.</p><div class="mt-8 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Best for</p><p class="mt-2 text-sm leading-6">Learning, experiments, small tools</p></div><div class="mt-5 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Includes</p><p class="mt-2 text-sm leading-6">Project, elements, relations</p></div></article><article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]"><div class="mb-8 flex items-start justify-between gap-6"><p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Web Application</p><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">02</span></div><h2 class="text-2xl font-semibold tracking-[-0.04em]">Classic web application</h2><p class="mt-4 leading-7 text-[var(--muted)]">A standard client/backend/database architecture with clear boundaries and production-ready metadata.</p><div class="mt-8 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Best for</p><p class="mt-2 text-sm leading-6">Web apps, portals, CRUD systems</p></div><div class="mt-5 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Includes</p><p class="mt-2 text-sm leading-6">Boundaries, frontend, service, database</p></div></article><article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]"><div class="mb-8 flex items-start justify-between gap-6"><p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Microservices</p><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">03</span></div><h2 class="text-2xl font-semibold tracking-[-0.04em]">Service-oriented platform</h2><p class="mt-4 leading-7 text-[var(--muted)]">Multiple domains with dedicated services, databases and an event bus for asynchronous communication.</p><div class="mt-8 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Best for</p><p class="mt-2 text-sm leading-6">Distributed systems, platform teams</p></div><div class="mt-5 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Includes</p><p class="mt-2 text-sm leading-6">Domains, services, event bus</p></div></article><article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]"><div class="mb-8 flex items-start justify-between gap-6"><p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">DDD Architecture</p><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">04</span></div><h2 class="text-2xl font-semibold tracking-[-0.04em]">Bounded contexts</h2><p class="mt-4 leading-7 text-[var(--muted)]">Model business domains and relationships between bounded contexts using explicit service ownership.</p><div class="mt-8 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Best for</p><p class="mt-2 text-sm leading-6">DDD, modular monoliths, domain modeling</p></div><div class="mt-5 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Includes</p><p class="mt-2 text-sm leading-6">Domains, services, databases</p></div></article><article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]"><div class="mb-8 flex items-start justify-between gap-6"><p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Event Driven</p><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">05</span></div><h2 class="text-2xl font-semibold tracking-[-0.04em]">Asynchronous architecture</h2><p class="mt-4 leading-7 text-[var(--muted)]">Command API, event bus, projection worker and read model for event-driven system design.</p><div class="mt-8 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Best for</p><p class="mt-2 text-sm leading-6">Event sourcing, projections, async workflows</p></div><div class="mt-5 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Includes</p><p class="mt-2 text-sm leading-6">Event bus, workers, read model</p></div></article><article class="group border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--border-strong)]"><div class="mb-8 flex items-start justify-between gap-6"><p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">SaaS Platform</p><span class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">06</span></div><h2 class="text-2xl font-semibold tracking-[-0.04em]">Production SaaS system</h2><p class="mt-4 leading-7 text-[var(--muted)]">A realistic SaaS architecture with CDN, portal, API gateway, tenant API, database and identity provider.</p><div class="mt-8 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Best for</p><p class="mt-2 text-sm leading-6">SaaS products, production systems</p></div><div class="mt-5 border-t border-[var(--border)] pt-5"><p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Includes</p><p class="mt-2 text-sm leading-6">Environment, gateway, identity provider</p></div></article></section><section class="mt-16 border-t border-[var(--border-strong)] pt-16"><div class="grid grid-cols-[0.9fr_1.1fr] gap-8 max-[1000px]:grid-cols-1"><div><p class="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Example</p><h2 class="max-w-[780px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">SaaS Platform Template</h2><p class="mt-6 max-w-[620px] leading-7 text-[var(--muted)]">The SaaS template demonstrates how ArchScript can model production
+environments, critical systems, owners, monitoring and infrastructure
+dependencies in one readable source file.</p><div class="mt-8 flex flex-wrap gap-3"><a href=/playground/ class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">Try Template</a></div></div><div class="border border-[var(--border-strong)] bg-[var(--surface)]"><div class="flex h-[52px] items-center justify-between border-b border-[var(--border)] px-[18px]"><span class="text-[11px] font-bold uppercase tracking-[0.22em]">Template Source
+</span><span class="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">SaaS Platform</span></div><pre class="max-h-[640px] overflow-auto bg-[var(--surface-soft)] p-6 font-mono text-xs leading-7 text-[var(--text)] whitespace-pre-wrap">project SaaSPlatform
 
 environment Production {
   element cdn "CDN" as cdn {
@@ -511,125 +95,16 @@ relation cdn -> portal : serves
 relation portal -> gateway : HTTPS
 relation gateway -> tenant_api : REST
 relation tenant_api -> tenant_db : PostgreSQL
-relation portal -> idp : OIDC</pre>
-      </div>
-    </div>
-  </section>
-
-  <section class="mt-16 border-t border-[var(--border-strong)] pt-16">
-    <div class="border border-[var(--border-strong)] bg-[var(--surface)] p-8">
-      <p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">
-        Workflow
-      </p>
-
-      <div class="grid grid-cols-[1fr_auto] items-end gap-8 max-[900px]:grid-cols-1">
-        <h2 class="max-w-[860px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">
-          Open a template, adapt the model, export the architecture.
-        </h2>
-
-        <a href="/playground/" class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">
-          Open Playground
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-
-  <footer
-  class="
-    border-t border-[var(--border)]
-    px-8 py-8
-    text-[11px]
-    uppercase
-    tracking-[0.12em]
-    text-[var(--muted)]
-    max-[640px]:px-4
-  "
->
-  <div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1">
-    <div>
-      <p class="text-[var(--text)]">
-        ARCHSCRIPT
-      </p>
-
-      <p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">
-        Architecture as Code for software systems. Built with Rust, WebAssembly,
-        Hugo and PlantUML.
-      </p>
-
-      <p class="mt-5">
-        © 2026 ArchScript
-      </p>
-    </div>
-
-    <div>
-      <p class="mb-4 text-[var(--text)]">
-        Product
-      </p>
-
-      <nav class="flex flex-col gap-3">
-        <a href="/playground/" class="hover:text-[var(--text)]">
-          Playground
-        </a>
-
-        <a href="/docs/" class="hover:text-[var(--text)]">
-          Documentation
-        </a>
-
-        <a href="/templates/" class="hover:text-[var(--text)]">
-          Templates
-        </a>
-      </nav>
-    </div>
-
-    <div>
-      <p class="mb-4 text-[var(--text)]">
-        Project
-      </p>
-
-      <nav class="flex flex-col gap-3">
-        <a
-          href="https://floriancode.de"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          FlorianCode.de
-        </a>
-
-        <a
-          href="https://github.com/schlummer13"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          GitHub / schlummer13
-        </a>
-
-        <a
-          href="https://floriancode.de/impressum/"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          Imprint
-        </a>
-
-        <a
-          href="https://floriancode.de/datenschutz/"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:text-[var(--text)]"
-        >
-          Privacy Policy
-        </a>
-      </nav>
-    </div>
-  </div>
-</footer>
-  <script src="/js/theme.js"></script>
-  <script defer src="https://tracking.floriancode.de/script.js" data-website-id="a1267098-714e-4408-a9a1-c4f8145e9efb"></script>
-</body>
-</html>
+relation portal -> idp : OIDC</pre></div></div></section><section class="mt-16 border-t border-[var(--border-strong)] pt-16"><div class="border border-[var(--border-strong)] bg-[var(--surface)] p-8"><p class="mb-5 text-xs font-semibold uppercase tracking-[0.45em] text-[var(--muted)]">Workflow</p><div class="grid grid-cols-[1fr_auto] items-end gap-8 max-[900px]:grid-cols-1"><h2 class="max-w-[860px] text-[clamp(42px,5vw,86px)] font-semibold leading-[0.95] tracking-[-0.07em]">Open a template, adapt the model, export the architecture.</h2><a href=/playground/ class="inline-flex border border-[var(--border-strong)] bg-[var(--text)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] transition-colors">Open Playground</a></div></div></section></main><footer class="border-t border-[var(--border)]
+px-8 py-8
+text-[11px]
+uppercase
+tracking-[0.12em]
+text-[var(--muted)]
+max-[640px]:px-4"><div class="mx-auto grid w-full max-w-[1800px] grid-cols-[1.1fr_1fr_1fr] gap-8 max-[900px]:grid-cols-1"><div><p class=text-[var(--text)]>ARCHSCRIPT</p><p class="mt-3 max-w-[420px] normal-case leading-6 tracking-normal">Architecture as Code for software systems. Built with Rust, WebAssembly,
+Hugo and PlantUML.</p><p class=mt-5>© 2026 ArchScript</p></div><div><p class="mb-4 text-[var(--text)]">Product</p><nav class="flex flex-col gap-3"><a href=/playground/ class=hover:text-[var(--text)]>Playground
+</a><a href=/docs/ class=hover:text-[var(--text)]>Documentation
+</a><a href=/templates/ class=hover:text-[var(--text)]>Templates</a></nav></div><div><p class="mb-4 text-[var(--text)]">Project</p><nav class="flex flex-col gap-3"><a href=https://floriancode.de target=_blank rel=noreferrer class=hover:text-[var(--text)]>FlorianCode.de
+</a><a href=https://github.com/schlummer13 target=_blank rel=noreferrer class=hover:text-[var(--text)]>GitHub / schlummer13
+</a><a href=https://floriancode.de/impressum/ target=_blank rel=noreferrer class=hover:text-[var(--text)]>Imprint
+</a><a href=https://floriancode.de/datenschutz/ target=_blank rel=noreferrer class=hover:text-[var(--text)]>Privacy Policy</a></nav></div></div></footer><script src=/js/theme.js></script><script defer src=https://tracking.floriancode.de/script.js data-website-id=a1267098-714e-4408-a9a1-c4f8145e9efb></script></body></html>
